@@ -1,13 +1,18 @@
 package instantcoffee.cinemaxx.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Data
 public class TheaterHall {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int theaterId;
+
+    @OneToMany(mappedBy = "theaterHall")
+    List<TimeSlot> timeSlots;
 }
