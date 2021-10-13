@@ -4,6 +4,7 @@ services:
     env_file: .env
     volumes:
       - .:/opt/api
+      - /opt/api/target
     working_dir: /opt/api
     entrypoint: ["./mvnw", "spring-boot:run"]
     ports:
