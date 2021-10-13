@@ -7,13 +7,14 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "theater_halls", schema = "cinemaxx")
+@Table(name = "theater_halls")
 public class TheaterHall {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int theaterHallId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "cinema_hall_id")
+  private int theaterHallId;
 
-    //@OneToMany(mappedBy = "")
-    //List<TimeSlot> timeSlots;
+  //@OneToMany(mappedBy = "")
+  //List<TimeSlot> timeSlots;
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "movies", schema = "cinemaxx")
+@Table(name = "movies")
 public class Movie {
 
     @Id
@@ -30,7 +30,4 @@ public class Movie {
     private LocalDate endDate;
     @Column(name = "rating")
     private int rating;
-
-    //@OneToMany(mappedBy = "movie")
-    //List<TimeSlot> timeSlots;
 }
