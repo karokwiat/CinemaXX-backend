@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/timeslot")
-public class TimeSlotController {
+@RequestMapping("/theater")
+public class TheaterHallController {
 }

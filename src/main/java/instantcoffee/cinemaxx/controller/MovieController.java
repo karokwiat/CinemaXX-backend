@@ -1,9 +1,11 @@
 package instantcoffee.cinemaxx.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@RestController
-@RequestMapping("/movie")
-public class MovieController {
+public interface MovieController {
+
+    @GetMapping("/{id}")
+    MovieDTOCustomer getMovieInfo(@PathVariable("id") int id);
 }

@@ -11,25 +11,26 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "movies", schema = "cinemaxx")
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Movie_Id")
+    @Column(name = "movie_Id")
     private int movieId;
-    @Column(name = "Title")
+    @Column(name = "title")
     private String title;
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
-    @Column(name = "Age_Restriction")
+    @Column(name = "age_restriction")
     private int ageRestriction;
-    @Column(name = "Starting_Date")
+    @Column(name = "start_date")
     private LocalDate startDate;
-    @Column(name = "Ending_Date")
+    @Column(name = "end_date")
     private LocalDate endDate;
-    @Column(name = "Ratings")
+    @Column(name = "rating")
     private int rating;
 
-    @OneToMany(mappedBy = "movie")
-    List<TimeSlot> timeSlots;
+    //@OneToMany(mappedBy = "movie")
+    //List<TimeSlot> timeSlots;
 }

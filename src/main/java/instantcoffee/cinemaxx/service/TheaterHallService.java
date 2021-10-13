@@ -1,4 +1,4 @@
 package instantcoffee.cinemaxx.service;
 
-public interface TheaterService {
+public interface TheaterHallService {
 }
