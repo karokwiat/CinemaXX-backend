@@ -1,13 +1,10 @@
 package instantcoffee.cinemaxx.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -30,4 +27,15 @@ public class Movie {
     private LocalDate endDate;
     @Column(name = "rating")
     private int rating;
+
+    @ManyToMany(mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
+    private Set<TheaterHall> theaterHallsHasMovies;
+
+    @ManyToMany
+    @JoinTable(
+        name = "actors_has_movies",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private Set<Actor> actorsHasMovies;
+
 }
