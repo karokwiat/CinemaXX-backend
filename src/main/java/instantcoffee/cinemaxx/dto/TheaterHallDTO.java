@@ -13,29 +13,29 @@ import java.util.stream.Collectors;
 @Getter
 public class TheaterHallDTO {
 
-    private int theaterHallId;
+  private int theaterHallId;
 
-    public TheaterHallDTO(TheaterHall theaterHall) {
-        this.theaterHallId = theaterHall.getTheaterHallId();
-    }
+  public TheaterHallDTO(TheaterHall theaterHall) {
+    this.theaterHallId = theaterHall.getTheaterHallId();
+  }
 
-    private static ModelMapper modelMapper = new ModelMapper();
+  private static ModelMapper modelMapper = new ModelMapper();
 
-    public static TheaterHallDTO entityToDTO(TheaterHall theaterHall) {
-        TheaterHallDTO theaterHallDTO = modelMapper.map(theaterHall, TheaterHallDTO.class);
-        return theaterHallDTO;
-    }
+  public static TheaterHallDTO entityToDTO(TheaterHall theaterHall) {
+    TheaterHallDTO theaterHallDTO = modelMapper.map(theaterHall, TheaterHallDTO.class);
+    return theaterHallDTO;
+  }
 
-    public static List<TheaterHallDTO> entityToDTO(List<TheaterHall> theaters) {
-        return theaters.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
-    }
+  public static List<TheaterHallDTO> entityToDTO(List<TheaterHall> theaters) {
+    return theaters.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
+  }
 
-    private static TheaterHall DTOtoEntity(TheaterHallDTO theaterHallDTO) {
-        TheaterHall theaterHall = modelMapper.map(theaterHallDTO, TheaterHall.class);
-        return theaterHall;
-    }
+  private static TheaterHall DTOtoEntity(TheaterHallDTO theaterHallDTO) {
+    TheaterHall theaterHall = modelMapper.map(theaterHallDTO, TheaterHall.class);
+    return theaterHall;
+  }
 
-    public static List<TheaterHall> DTOtoEntity(List<TheaterHallDTO> theaterHallDTOS) {
-        return theaterHallDTOS.stream().map(x -> DTOtoEntity(x)).collect(Collectors.toList());
-    }
+  public static List<TheaterHall> DTOtoEntity(List<TheaterHallDTO> theaterHallDTOS) {
+    return theaterHallDTOS.stream().map(x -> DTOtoEntity(x)).collect(Collectors.toList());
+  }
 }
