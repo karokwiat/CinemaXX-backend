@@ -40,4 +40,10 @@ public class MovieServiceImp implements MovieService{
     public MovieDTOCustomer getById(int id) {
         return MovieDTOCustomer.entityToDTO(movieRepo.findById(id));
     }
+
+    @Override
+    public void delete(int id) {
+        Movie movie = movieRepo.getById(id);
+        movieRepo.delete(movie);
+    }
 }

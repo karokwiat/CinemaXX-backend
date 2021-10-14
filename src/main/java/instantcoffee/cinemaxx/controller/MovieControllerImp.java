@@ -1,6 +1,6 @@
 package instantcoffee.cinemaxx.controller;
 
-import instantcoffee.cinemaxx.dto.MovieDTO;
+
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.service.MovieService;
@@ -20,10 +20,15 @@ public class MovieControllerImp implements MovieController{
     }
 
     @GetMapping("/{id}")
-    public MovieDTOCustomer getMovieInfo(@PathVariable ("id") int id){
+    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){
         return movieService.getById(id);
     }
 
+
+    @Override
+    public void deleteMovie(int id) {
+        movieService.delete(id);
+    }
     @PostMapping
     public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
         try {
@@ -35,6 +40,4 @@ public class MovieControllerImp implements MovieController{
             return ResponseEntity.badRequest().body("no bueno");
         }
     }
-
-
 }

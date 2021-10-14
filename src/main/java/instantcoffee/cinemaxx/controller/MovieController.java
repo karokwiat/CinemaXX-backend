@@ -1,13 +1,11 @@
 package instantcoffee.cinemaxx.controller;
 
-import instantcoffee.cinemaxx.dto.MovieDTO;
+
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.entities.Movie;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 public interface MovieController {
 
@@ -16,4 +14,8 @@ public interface MovieController {
 
     @PostMapping
     ResponseEntity<String> postMovie(@RequestBody Movie movie);
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMovie(@PathVariable int id);
 }
