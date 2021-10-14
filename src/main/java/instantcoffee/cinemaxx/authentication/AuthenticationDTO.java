@@ -1,4 +1,4 @@
-package instantcoffee.cinemaxx.dto;
+package instantcoffee.cinemaxx.authentication;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

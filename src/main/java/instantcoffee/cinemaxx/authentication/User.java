@@ -1,4 +1,4 @@
-package instantcoffee.cinemaxx.entities;
+package instantcoffee.cinemaxx.authentication;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

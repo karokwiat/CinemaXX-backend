@@ -1,4 +1,4 @@
-package instantcoffee.cinemaxx.controller;
+package instantcoffee.cinemaxx.authentication;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import instantcoffee.cinemaxx.dto.AuthenticationDTO;
-import instantcoffee.cinemaxx.entities.User;
-import instantcoffee.cinemaxx.service.AuthenticationService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
