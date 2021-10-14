@@ -3,6 +3,7 @@ package instantcoffee.cinemaxx.service;
 import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.entities.Movie;
+import instantcoffee.cinemaxx.error.ResourceNotFoundException;
 import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,10 @@ import java.time.LocalDate;
 public class MovieServiceImp implements MovieService{
 
     MovieRepo movieRepo;
+
+    private String errorMessage(long id){
+        return "Not found Movie with id = " + id;
+    }
 
     @Autowired
     public MovieServiceImp (MovieRepo movieRepo){
@@ -38,7 +43,8 @@ public class MovieServiceImp implements MovieService{
 
     @Override
     public MovieDTOCustomer getById(int id) {
-        return MovieDTOCustomer.entityToDTO(movieRepo.findById(id));
+        return MovieDTOCustomer.entityToDTO(movieRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(errorMessage(id))));
     }
 
     @Override
