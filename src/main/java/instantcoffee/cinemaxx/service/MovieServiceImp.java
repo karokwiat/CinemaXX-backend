@@ -2,6 +2,7 @@ package instantcoffee.cinemaxx.service;
 
 import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
+import instantcoffee.cinemaxx.dto.MovieDTODate;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class MovieServiceImp implements MovieService{
@@ -45,5 +47,10 @@ public class MovieServiceImp implements MovieService{
     public void delete(int id) {
         Movie movie = movieRepo.getById(id);
         movieRepo.delete(movie);
+    }
+    @Override
+    public List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange) {
+        List<Movie> list = movieRepo.getAllByRange(startRange, endRange);
+        return MovieDTODate.entityToDTO(list);
     }
 }
