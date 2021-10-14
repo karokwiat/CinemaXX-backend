@@ -12,7 +12,7 @@ public class TheaterHall {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "cinema_hall_id")
+  @Column(name = "theater_hall_id")
   private int theaterHallId;
 
   //@OneToMany(mappedBy = "")
