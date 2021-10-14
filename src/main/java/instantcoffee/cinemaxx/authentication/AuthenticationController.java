@@ -32,7 +32,7 @@ public class AuthenticationController {
         User user = this.jwtUserDetailsService.signUp(username, password);
 
         if (user == null) {
-            return ResponseEntity.status(403).build();
+            return ResponseEntity.status(401).build();
         }
 
         return ResponseEntity.ok(new SignUpResponse(user.getId(), user.getUsername()));
@@ -46,7 +46,7 @@ public class AuthenticationController {
         String token = this.jwtUserDetailsService.login(username, password);
 
         if (token == null) {
-            return ResponseEntity.status(403).build();
+            return ResponseEntity.status(401).build();
         }
 
         return ResponseEntity.ok(new LoginResponse(token));
