@@ -5,6 +5,7 @@ import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,8 +25,15 @@ public class MovieControllerImp implements MovieController{
     }
 
     @PostMapping
-    public MovieDTO postMovie(@RequestBody Movie movie) {
-        return movieService.createMovie(movie);
+    public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
+        try {
+            System.out.println(movie);
+            movieService.createMovie(movie);
+            return ResponseEntity.ok("bueno");
+        } catch (Exception e) {
+            //e.printStackTrace();
+            return ResponseEntity.badRequest().body("no bueno");
+        }
     }
 
 

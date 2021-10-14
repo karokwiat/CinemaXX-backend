@@ -6,6 +6,7 @@ import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,12 +24,16 @@ public class MovieServiceImp implements MovieService{
     }
 
     @Override
-    public MovieDTO createMovie(Movie movie) {
-        Movie movie1 = movieRepo.save(movie);
-        LocalDate d1 = movie1.getStartDate();
-        LocalDate d2 = movie1.getEndDate();
-        //if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0 ){}
-        return MovieDTO.entityToDTO(movie1);
+    public MovieDTO createMovie(Movie movie) throws Exception {
+        //Movie movie1 = new Movie();
+        LocalDate d1 = movie.getStartDate();
+        LocalDate d2 = movie.getEndDate();
+        System.out.println(d1 + " " + d2);
+        if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0 ){
+            throw new Exception("no bueno");
+        }
+        movieRepo.save(movie);
+        return MovieDTO.entityToDTO(movie);
     }
 
     @Override
