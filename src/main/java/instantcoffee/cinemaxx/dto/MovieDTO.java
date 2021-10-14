@@ -19,22 +19,14 @@ import java.util.stream.Collectors;
 @Getter @Setter
 public class MovieDTO {
 
-    private int movieId;
     private String title;
-    private String description;
     private int ageRestriction;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private int rating;
+
 
     public MovieDTO(Movie movie) {
-        this.movieId = movie.getMovieId();
         this.title = movie.getTitle();
-        this.description = movie.getDescription();
         this.ageRestriction = movie.getAgeRestriction();
-        this.startDate = movie.getStartDate();
-        this.endDate = movie.getEndDate();
-        this.rating = movie.getRating();
+
     }
 
     private static ModelMapper modelMapper = new ModelMapper();
