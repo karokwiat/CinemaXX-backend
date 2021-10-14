@@ -1,6 +1,7 @@
 package instantcoffee.cinemaxx.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,7 +32,6 @@ public class Movie {
     private LocalDate startDate;
 
     @Column(name = "end_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @Column(name = "rating")

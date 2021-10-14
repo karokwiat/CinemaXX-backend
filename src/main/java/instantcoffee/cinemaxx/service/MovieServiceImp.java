@@ -25,10 +25,10 @@ public class MovieServiceImp implements MovieService{
 
     @Override
     public MovieDTO createMovie(Movie movie) throws Exception {
-        //Movie movie1 = new Movie();
+
         LocalDate d1 = movie.getStartDate();
         LocalDate d2 = movie.getEndDate();
-        System.out.println(d1 + " " + d2);
+
         if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0 ){
             throw new Exception("no bueno");
         }

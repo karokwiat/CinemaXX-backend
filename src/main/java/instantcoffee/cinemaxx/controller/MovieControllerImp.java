@@ -5,8 +5,12 @@ import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/movie")
@@ -32,12 +36,10 @@ public class MovieControllerImp implements MovieController{
     @PostMapping
     public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
         try {
-            System.out.println(movie);
             movieService.createMovie(movie);
-            return ResponseEntity.ok("bueno");
+            return ResponseEntity.ok("Movie successfully added");
         } catch (Exception e) {
-            //e.printStackTrace();
-            return ResponseEntity.badRequest().body("no bueno");
+            return ResponseEntity.badRequest().body("Starting date is after Ending date, please check.");
         }
     }
 }
