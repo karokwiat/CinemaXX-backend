@@ -18,8 +18,6 @@ public class TimeSlotDTO {
 
     public TimeSlotDTO(TimeSlot timeSlot) {
         this.timeSlotId = timeSlot.getTimeSlotId();
-        this.startingPeriod = timeSlot.getStartingPeriod();
-        this.endingPeriod = timeSlot.getEndingPeriod();
     }
 
     private static ModelMapper modelMapper = new ModelMapper();

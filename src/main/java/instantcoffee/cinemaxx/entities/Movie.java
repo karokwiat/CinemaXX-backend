@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -31,5 +32,11 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
-    @OneToMany(targetEntity = )
+    @ManyToMany //(mappedBy= "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
+    @JoinTable(
+            name="theater_halls_has_movies",
+            joinColumns = @JoinColumn(name="movie_Id"),
+            inverseJoinColumns = @JoinColumn(name = "time_slots_id")
+    )
+    private Set<TimeSlot> timeSlots;
 }
