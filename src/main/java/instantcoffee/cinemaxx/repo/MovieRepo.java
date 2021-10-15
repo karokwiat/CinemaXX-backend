@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface MovieRepo extends JpaRepository<Movie,Integer> {
 
-    public Movie findById(int id);
 
     @RestResource(
             path = "getAllByRange",
