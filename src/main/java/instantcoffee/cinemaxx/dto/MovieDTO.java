@@ -43,7 +43,7 @@ public class MovieDTO {
         return movies.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
     }
 
-    private static Movie DTOtoEntity(MovieDTO movieDTO) {
+    public static Movie DTOtoEntity(MovieDTO movieDTO) {
         Movie movie = modelMapper.map(movieDTO, Movie.class);
         return movie;
     }

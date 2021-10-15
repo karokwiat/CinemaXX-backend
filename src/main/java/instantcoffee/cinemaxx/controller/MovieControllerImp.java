@@ -1,16 +1,13 @@
 package instantcoffee.cinemaxx.controller;
 
-
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/movie")
@@ -34,6 +31,7 @@ public class MovieControllerImp implements MovieController{
         movieService.delete(id);
     }
     @PostMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
         try {
             movieService.createMovie(movie);

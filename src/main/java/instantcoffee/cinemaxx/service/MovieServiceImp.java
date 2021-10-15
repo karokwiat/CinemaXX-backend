@@ -30,7 +30,7 @@ public class MovieServiceImp implements MovieService{
         LocalDate d2 = movie.getEndDate();
 
         if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0 ){
-            throw new Exception("no bueno");
+            throw new Exception("Starting date is after Ending date, please review.");
         }
         movieRepo.save(movie);
         return MovieDTO.entityToDTO(movie);
