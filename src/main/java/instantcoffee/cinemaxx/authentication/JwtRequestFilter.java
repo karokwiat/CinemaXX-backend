@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import io.jsonwebtoken.security.SignatureException;
 import lombok.AllArgsConstructor;
 
 @Component
@@ -33,14 +35,24 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     String jwtToken = null;
     if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
       jwtToken = requestTokenHeader.split(" ")[1];
-      username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+      try {
+        username = jwtTokenUtil.getUsernameFromToken(jwtToken);
+      } catch (SignatureException exception) {
+        // ¯\_(ツ)_/¯
+      }
     }
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-      UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+      UserDetails userDetails = null;
 
-      if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
+      try {
+        userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+      } catch (UsernameNotFoundException exception) {
+        // ¯\_(ツ)_/¯
+      }
+
+      if (userDetails != null && jwtTokenUtil.validateToken(jwtToken, userDetails)) {
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
             userDetails, null, userDetails.getAuthorities());
 

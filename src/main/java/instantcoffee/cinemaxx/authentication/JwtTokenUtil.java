@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 
 import java.security.Key;
 import java.util.Date;
@@ -34,16 +35,16 @@ public class JwtTokenUtil {
   }
 
   public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
-    final Claims claims = getAllClaimsFromToken(token);
+    Claims claims = getAllClaimsFromToken(token);
     return claimsResolver.apply(claims);
   }
 
-  private Claims getAllClaimsFromToken(String token) {
+  private Claims getAllClaimsFromToken(String token) throws SignatureException {
     return Jwts.parserBuilder().setSigningKey(jwtSecret).build().parseClaimsJws(token).getBody();
   }
 
   private Boolean isTokenExpired(String token) {
-    final Date expiration = getExpirationDateFromToken(token);
+    Date expiration = getExpirationDateFromToken(token);
     return expiration.before(new Date());
   }
 
@@ -61,7 +62,7 @@ public class JwtTokenUtil {
   }
 
   public Boolean validateToken(String token, UserDetails userDetails) {
-    final String username = getUsernameFromToken(token);
+    String username = getUsernameFromToken(token);
     return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
   }
 }
