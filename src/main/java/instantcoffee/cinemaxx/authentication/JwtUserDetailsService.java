@@ -20,13 +20,8 @@ public class JwtUserDetailsService implements UserDetailsService {
   private final PasswordEncoder passwordEncoder;
 
   @Override
-  public User loadUserByUsername(String username) throws UsernameNotFoundException {
+  public User loadUserByUsername(String username) {
     User user = this.userRepository.findByUsername(username);
-
-    if (user == null) {
-      throw new UsernameNotFoundException("Username does not exist");
-    }
-
     return user;
   }
 
@@ -47,14 +42,17 @@ public class JwtUserDetailsService implements UserDetailsService {
   public String login(String username, String password) {
     User user = this.loadUserByUsername(username);
 
-    UserDetails userDetails = this.loadUserByUsername(username);
+    if (user == null) {
+      return null;
+    }
+
     boolean didPasswordMatch = this.passwordEncoder.matches(password, user.getPassword());
 
     if (!didPasswordMatch) {
       return null;
     }
 
-    String token = jwtTokenUtil.generateToken(userDetails);
+    String token = jwtTokenUtil.generateToken(user);
 
     return token;
   }
