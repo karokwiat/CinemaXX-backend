@@ -31,7 +31,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity httpSecurity) throws Exception {
+<<<<<<< HEAD
     httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate/signup", "/authenticate/login")
+=======
+    httpSecurity.csrf().disable().authorizeRequests()
+        .antMatchers("/authenticate/signup", "/authenticate/login", "/api-docs", "/api-docs/swagger-config", "/swagger",
+            "/swagger-ui/*")
+>>>>>>> 5a2f97e (fix: permit api docs)
         .permitAll().anyRequest().authenticated().and().exceptionHandling()
         .authenticationEntryPoint(this.jwtAuthenticationEntryPoint).and().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
