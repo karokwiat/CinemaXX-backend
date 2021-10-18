@@ -1,44 +1,38 @@
 package instantcoffee.cinemaxx.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import instantcoffee.cinemaxx.entities.Movie;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieDTODate {
+
     private String title;
     private int ageRestriction;
+    private Set<TimeSlotDTO> timeSlots;
 
-
-    public MovieDTODate(Movie movie) {
-        this.title = movie.getTitle();
-        this.ageRestriction = movie.getAgeRestriction();
-
-    }
-
-    private static ModelMapper modelMapper = new ModelMapper();
-
-    public static MovieDTODate entityToDTO(Movie movie) {
-        MovieDTODate movieDTODate = modelMapper.map(movie, MovieDTODate.class);
-        return movieDTODate;
+    public MovieDTODate(String title, int ageRestriction, Set<TimeSlotDTO> timeSlots) {
+        this.title = title;
+        this.ageRestriction = ageRestriction;
+        this.timeSlots = timeSlots;
     }
 
     public static List<MovieDTODate> entityToDTO(List<Movie> movies) {
-        return movies.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
-    }
-
-    private static Movie DTOtoEntity(MovieDTODate movieDTODate) {
-        Movie movie = modelMapper.map(movieDTODate, Movie.class);
-        return movie;
-    }
-
-    public static List<Movie> DTOtoEntity(List<MovieDTODate> movieDTOS) {
-        return movieDTOS.stream().map(x -> DTOtoEntity(x)).collect(Collectors.toList());
+        return movies.stream()
+                .map(x -> new MovieDTODate(x.getTitle(), x.getAgeRestriction(), x.getTimeSlots().stream()
+                        .map(c -> new TimeSlotDTO(c.getScheduledTime())).collect(Collectors.toSet())))
+                .collect(Collectors.toList());
     }
 }

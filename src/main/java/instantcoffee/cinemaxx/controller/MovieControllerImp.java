@@ -30,8 +30,7 @@ public class MovieControllerImp implements MovieController{
     public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){
         return movieService.getById(id);
     }
-
-
+    
     @Override
     public void deleteMovie(int id) {
         movieService.delete(id);
@@ -45,8 +44,8 @@ public class MovieControllerImp implements MovieController{
             return ResponseEntity.badRequest().body("Starting date is after Ending date, please check.");
         }
     }
-    @Override
-    public List<MovieDTODate> getAllByRange(LocalDate startRange, LocalDate endRange) {
+    @GetMapping
+    public List<MovieDTODate> getAllByRange(@RequestParam("startRange") LocalDate startRange, @RequestParam("endRange") LocalDate endRange) {
         return movieService.getByDateRange(startRange, endRange);
     }
 }

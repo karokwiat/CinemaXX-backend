@@ -1,12 +1,13 @@
 package instantcoffee.cinemaxx.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -16,7 +17,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_Id")
+    @Column(name = "movie_id")
     private int movieId;
 
     @Column(name = "title")
@@ -37,15 +38,14 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
-
-    @ManyToMany(mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
-    private Set<TheaterHall> theaterHallsHasMovies;
+    // private LocalDateTime scheduledTime;
 
     @ManyToMany
-    @JoinTable(
-            name = "actors_has_movies",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    private Set<Actor> actorsHasMovies;
+    @JoinTable(name = "actors_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private Set<Actor> actors;
+
+    @ManyToMany
+    @JoinTable(name = "theater_halls_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
+    private Set<TimeSlot> timeSlots;
 
 }

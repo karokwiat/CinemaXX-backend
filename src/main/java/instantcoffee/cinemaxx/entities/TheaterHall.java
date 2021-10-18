@@ -17,10 +17,7 @@ public class TheaterHall {
   private int movieTheaterId;
 
   @ManyToMany
-  @JoinTable(
-      name = "theater_halls_has_movies",
-      joinColumns = @JoinColumn(name = "theater_hall_id"),
-      inverseJoinColumns = @JoinColumn(name = "movie_id"))
-  private Set<Movie> theaterHallsHasMovies;
+  @JoinTable(name = "theater_halls_has_movies", joinColumns = @JoinColumn(name = "theater_hall_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
+  private Set<Movie> movies;
 
 }

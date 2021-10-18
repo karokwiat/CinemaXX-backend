@@ -14,12 +14,14 @@ public class Actor {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "actor_id")
   private int actorId;
+
   @Column(name = "firstName")
   private String firstName;
+
   @Column(name = "lastName")
   private String lastName;
 
-  @ManyToMany(mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
-  private Set<Movie> actorsHasMovies;
+  @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+  private Set<Movie> movies;
 
 }
