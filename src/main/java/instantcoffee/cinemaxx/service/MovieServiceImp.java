@@ -7,6 +7,9 @@ import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.HashSet;
+
 @Service
 public class MovieServiceImp implements MovieService{
 
@@ -26,5 +29,14 @@ public class MovieServiceImp implements MovieService{
     public void delete(int id) {
         Movie movie = movieRepo.getById(id);
         movieRepo.delete(movie);
+    }
+
+    @Override
+    @Transactional
+    public void edit(MovieDTO movie) {
+        Movie newMovie = MovieDTO.DTOtoEntity(movie);
+        System.out.println(newMovie);
+        System.out.println(movieRepo.findById(newMovie.getMovieId()));
+        //movieRepo.save();
     }
 }

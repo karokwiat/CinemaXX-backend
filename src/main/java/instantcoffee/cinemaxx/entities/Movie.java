@@ -28,10 +28,10 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
-    @ManyToMany(mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
     private Set<TheaterHall> theaterHallsHasMovies;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "actors_has_movies",
         joinColumns = @JoinColumn(name = "movie_id"),

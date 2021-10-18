@@ -19,7 +19,7 @@ public class Actor {
   @Column(name = "lastName")
   private String lastName;
 
-  @ManyToMany(mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
+  @ManyToMany(fetch = FetchType.LAZY, mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
   private Set<Movie> actorsHasMovies;
 
 }

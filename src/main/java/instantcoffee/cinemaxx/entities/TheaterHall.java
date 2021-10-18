@@ -17,7 +17,7 @@ public class TheaterHall {
   @Column(name = "movie_theater_id")
   private int movieTheaterId;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
       name = "theater_halls_has_movies",
       joinColumns = @JoinColumn(name = "theater_hall_id"),
