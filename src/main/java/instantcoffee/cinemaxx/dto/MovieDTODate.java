@@ -31,8 +31,12 @@ public class MovieDTODate {
 
     public static List<MovieDTODate> entityToDTO(List<Movie> movies) {
         return movies.stream()
-                .map(x -> new MovieDTODate(x.getTitle(), x.getAgeRestriction(), x.getTimeSlots().stream()
-                        .map(c -> new TimeSlotDTO(c.getScheduledTime())).collect(Collectors.toSet())))
+                .map(x ->
+                        new MovieDTODate(x.getTitle(), x.getAgeRestriction(),
+                            x.getTimeSlots().stream()
+                        .map(c ->
+                            new TimeSlotDTO(c.getScheduledTime()))
+                        .collect(Collectors.toSet())))
                 .collect(Collectors.toList());
     }
 }

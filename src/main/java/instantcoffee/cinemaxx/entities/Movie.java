@@ -45,7 +45,7 @@ public class Movie {
     private Set<Actor> actors;
 
     @ManyToMany
-    @JoinTable(name = "theater_halls_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
+    @JoinTable(name = "movie_has_timeslots", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
     private Set<TimeSlot> timeSlots;
 
 }
