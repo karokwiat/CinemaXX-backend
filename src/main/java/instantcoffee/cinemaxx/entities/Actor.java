@@ -1,12 +1,15 @@
 package instantcoffee.cinemaxx.entities;
 
-import lombok.Data;
+import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "actors")
 public class Actor {
 
@@ -14,12 +17,15 @@ public class Actor {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "actor_id")
   private int actorId;
+
   @Column(name = "firstName")
   private String firstName;
+
   @Column(name = "lastName")
   private String lastName;
 
-  @ManyToMany(mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
-  private Set<Movie> actorsHasMovies;
+  @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+  @JsonIgnore
+  private Set<Movie> movies;
 
 }

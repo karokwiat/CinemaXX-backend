@@ -9,8 +9,10 @@ import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieServiceImp implements MovieService{
@@ -40,10 +42,23 @@ public class MovieServiceImp implements MovieService{
     }
 
     @Override
+    //@Transactional
     public MovieDTOCustomer getById(int id) {
         return MovieDTOCustomer.entityToDTO(movieRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(errorMessage(id))));
     }
+
+    @Override
+    //@Transactional
+    public List <MovieDTOCustomer> getMoviesDTOCustomer(){
+        return MovieDTOCustomer.getListFromMovieList(movieRepo.findAll());
+    };
+
+    /*@Override
+    public Movie getMovieInfo(int id){
+        return movieRepo.getMovieInfo(id);
+                //.orElseThrow(() -> new ResourceNotFoundException(errorMessage(id)));
+    };*/
 
     @Override
     public void delete(int id) {

@@ -17,6 +17,7 @@ public interface MovieService {
 
     MovieDTO createMovie(Movie movie) throws Exception;
     MovieDTOCustomer getById(int id);
+    List <MovieDTOCustomer> getMoviesDTOCustomer();
     List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange);
 
     void delete(int id);

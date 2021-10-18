@@ -1,5 +1,6 @@
 package instantcoffee.cinemaxx.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import instantcoffee.cinemaxx.entities.Movie;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Getter @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieDTO {
 
     private int movieId;

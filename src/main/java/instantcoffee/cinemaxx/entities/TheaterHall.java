@@ -1,11 +1,14 @@
 package instantcoffee.cinemaxx.entities;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter @Setter
 @Table(name = "theater_halls")
 public class TheaterHall {
 
@@ -16,11 +19,11 @@ public class TheaterHall {
   @Column(name = "movie_theater_id")
   private int movieTheaterId;
 
-  @ManyToMany
+  /*@ManyToMany
   @JoinTable(
       name = "theater_halls_has_movies",
       joinColumns = @JoinColumn(name = "theater_hall_id"),
       inverseJoinColumns = @JoinColumn(name = "movie_id"))
-  private Set<Movie> theaterHallsHasMovies;
+  private Set<Movie> theaterHallsHasMovies;*/
 
 }
