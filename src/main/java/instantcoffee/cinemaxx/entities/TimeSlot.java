@@ -1,13 +1,23 @@
 package instantcoffee.cinemaxx.entities;
 
-import lombok.Data;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import lombok.*;
+
 @Entity
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "time_slots")
 public class TimeSlot {
     @Id

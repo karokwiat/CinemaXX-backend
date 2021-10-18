@@ -1,17 +1,24 @@
 package instantcoffee.cinemaxx.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import lombok.*;
+
 @Entity
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "movies")
 public class Movie {
 
@@ -45,7 +52,7 @@ public class Movie {
     private Set<Actor> actors;
 
     @ManyToMany
-    @JoinTable(name = "movie_has_timeslots", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
+    @JoinTable(name = "theater_halls_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
     private Set<TimeSlot> timeSlots;
 
 }

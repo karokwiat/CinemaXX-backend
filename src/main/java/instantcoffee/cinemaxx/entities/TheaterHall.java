@@ -1,11 +1,13 @@
 package instantcoffee.cinemaxx.entities;
 
-import lombok.Data;
+import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "theater_halls")
 public class TheaterHall {
 

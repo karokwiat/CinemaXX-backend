@@ -56,8 +56,7 @@ public class MovieServiceImp implements MovieService {
     }
 
     @Override
-    @Transactional
-    ublic List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange) {
+    public List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange) {
         System.out.println(startRange);
         System.out.println(endRange);
 
