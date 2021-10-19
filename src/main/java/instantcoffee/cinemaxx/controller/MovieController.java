@@ -14,15 +14,8 @@ import java.util.List;
 
 public interface MovieController {
 
-    //@GetMapping("/{id}")
-    MovieDTOCustomer getMovieInfo(@PathVariable("id") int id);
-
     @GetMapping("/{id}")
-    Movie getMovie(@PathVariable("id") int id);
-
-    //@GetMapping("/v2")
-    List<MovieDTOCustomer> getMoviesDTOCustomer();
-
+    MovieDTOCustomer getMovieInfo(@PathVariable("id") int id);
 
     @PostMapping
     ResponseEntity<String> postMovie(@RequestBody Movie movie);

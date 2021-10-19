@@ -1,7 +1,7 @@
 package instantcoffee.cinemaxx.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;

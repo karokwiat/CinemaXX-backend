@@ -29,16 +29,8 @@ public class MovieControllerImp implements MovieController{
         this.movieRepo = movieRepo;
     }
 
-    //@GetMapping("/{id}")
-    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){ return movieService.getById(id); }
-
     @GetMapping("/{id}")
-    public Movie getMovie(@PathVariable("id") int id){ return movieRepo.findById(id).orElseThrow(); }
-
-    //@GetMapping("/v2")
-    public List<MovieDTOCustomer> getMoviesDTOCustomer(){
-        return movieService.getMoviesDTOCustomer();
-    };
+    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){ return movieService.getById(id); }
 
 
     @Override
