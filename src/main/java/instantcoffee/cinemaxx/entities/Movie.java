@@ -1,24 +1,19 @@
 package instantcoffee.cinemaxx.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
-import lombok.*;
-
 @Entity
+@RequiredArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Table(name = "movies")
 public class Movie {
 
@@ -45,23 +40,18 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
-    @Column(name = "image")
-    private String image;
-
-    @Column(name = "poster")
-    private String poster;
-
-    @Column(name = "trailer")
-    private String trailer;
-
-    // private LocalDateTime scheduledTime;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
+    private Set<TheaterHall> theaterHallsHasMovies = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "actors_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    private Set<Actor> actors;
+    @JoinTable(
+        name = "actors_has_movies",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private Set<Actor> actorsHasMovies = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "theater_halls_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
-    private Set<TimeSlot> timeSlots;
-
+    public Set<Actor> getActors() {
+        return actorsHasMovies;
+    }
 }

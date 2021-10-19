@@ -1,19 +1,18 @@
 package instantcoffee.cinemaxx.repo;
 
-import java.time.LocalDate;
-import java.util.List;
-
+import instantcoffee.cinemaxx.entities.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
-import instantcoffee.cinemaxx.entities.Movie;
+import java.time.LocalDate;
+import java.util.List;
 
 @Repository
 public interface MovieRepo extends JpaRepository<Movie,Integer> {
-    //public List<Movie> findByStartDateLessThanEqualAndEndDateGreaterThanEqual(LocalDate startRange, LocalDate endRange);
+
 
     @RestResource(
             path = "getAllByRange",

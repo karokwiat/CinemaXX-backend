@@ -7,26 +7,22 @@ import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.error.ResourceNotFoundException;
 import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 @Service
-public class MovieServiceImp implements MovieService {
+public class MovieServiceImp implements MovieService{
 
     MovieRepo movieRepo;
 
-    private String errorMessage(long id) {
+    private String errorMessage(long id){
         return "Not found Movie with id = " + id;
     }
 
     @Autowired
-    public MovieServiceImp(MovieRepo movieRepo) {
+    public MovieServiceImp (MovieRepo movieRepo){
         this.movieRepo = movieRepo;
     }
 
@@ -36,7 +32,7 @@ public class MovieServiceImp implements MovieService {
         LocalDate d1 = movie.getStartDate();
         LocalDate d2 = movie.getEndDate();
 
-        if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0) {
+        if (d1.compareTo(d2) > 0 || d1.compareTo(d2) == 0 ){
             throw new Exception("Starting date is after Ending date, please review.");
         }
         movieRepo.save(movie);
@@ -45,8 +41,8 @@ public class MovieServiceImp implements MovieService {
 
     @Override
     public MovieDTOCustomer getById(int id) {
-        return MovieDTOCustomer
-                .entityToDTO(movieRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException(errorMessage(id))));
+        return MovieDTOCustomer.entityToDTO(movieRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(errorMessage(id))));
     }
 
     @Override
@@ -56,12 +52,27 @@ public class MovieServiceImp implements MovieService {
     }
 
     @Override
+    public void edit(MovieDTO movie) {
+        Movie newMovie = MovieDTO.DTOtoEntity(movie);
+        Movie oldMovie = movieRepo.findById(movie.getMovieId()).get();
+        if(newMovie.getTitle().isEmpty())
+            newMovie.setTitle(oldMovie.getTitle());
+        if(newMovie.getAgeRestriction() == 0)
+            newMovie.setAgeRestriction(oldMovie.getAgeRestriction());
+        if(newMovie.getDescription().isEmpty())
+            newMovie.setDescription(oldMovie.getDescription());
+        if(newMovie.getStartDate() == null)
+            newMovie.setStartDate(oldMovie.getStartDate());
+        if(newMovie.getEndDate() == null)
+            newMovie.setEndDate(oldMovie.getEndDate());
+        if(newMovie.getRating() == 0)
+            newMovie.setRating(oldMovie.getRating());
+        movieRepo.save(newMovie);
+    }
+
+    @Override
     public List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange) {
-        System.out.println(startRange);
-        System.out.println(endRange);
-
         List<Movie> list = movieRepo.getAllByRange(startRange, endRange);
-
         return MovieDTODate.entityToDTO(list);
     }
 }

@@ -24,6 +24,11 @@ public interface MovieController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMovie(@PathVariable int id);
 
+    @PutMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void editMovie(@RequestBody MovieDTO movie);
+
     @GetMapping
     List<MovieDTODate> getAllByRange(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startRange, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endRange);
+
 }

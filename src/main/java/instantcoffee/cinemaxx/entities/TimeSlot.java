@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Entity
@@ -27,12 +28,13 @@ public class TimeSlot {
     @Column(name = "scheduled_time")
     private LocalDateTime scheduledTime;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "timeSlots", cascade = CascadeType.REMOVE)
     private Set<Movie> movies;
 
     /*
      * @ManyToMany
-     * 
+     *
      * @JoinTable( name = "theater_halls_has_movies", joinColumns = @JoinColumn(name
      * = "time_slots_id"), inverseJoinColumns = @JoinColumn(name = "movies") )
      * private Set<Movie> movies;

@@ -5,10 +5,13 @@ import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.dto.MovieDTODate;
 import instantcoffee.cinemaxx.entities.Movie;
+import instantcoffee.cinemaxx.repo.MovieRepo;
 import instantcoffee.cinemaxx.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,20 +23,26 @@ import java.util.List;
 public class MovieControllerImp implements MovieController{
 
     MovieService movieService;
+    MovieRepo movieRepo;
 
     @Autowired
-    public MovieControllerImp(MovieService movieService){
+    public MovieControllerImp(MovieService movieService, MovieRepo movieRepo){
         this.movieService = movieService;
+        this.movieRepo = movieRepo;
     }
 
     @GetMapping("/{id}")
-    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){
-        return movieService.getById(id);
-    }
-    
+    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){ return movieService.getById(id); }
+
+
     @Override
     public void deleteMovie(int id) {
         movieService.delete(id);
+    }
+
+    @Override
+    public void editMovie(MovieDTO movie) {
+        movieService.edit(movie);
     }
 
     @PostMapping
@@ -45,8 +54,8 @@ public class MovieControllerImp implements MovieController{
             return ResponseEntity.badRequest().body("Starting date is after Ending date, please check.");
         }
     }
-    @GetMapping
-    public List<MovieDTODate> getAllByRange(@RequestParam("startRange") LocalDate startRange, @RequestParam("endRange") LocalDate endRange) {
+    @Override
+    public List<MovieDTODate> getAllByRange(LocalDate startRange, LocalDate endRange) {
         return movieService.getByDateRange(startRange, endRange);
     }
 }
