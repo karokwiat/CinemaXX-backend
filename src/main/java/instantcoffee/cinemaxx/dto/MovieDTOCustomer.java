@@ -15,14 +15,12 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class MovieDTOCustomer {
-    private int movieId;
     private String title;
     private String description;
     private int ageRestriction;
     private int rating;
 
     public MovieDTOCustomer(Movie movie) {
-        this.movieId = movie.getMovieId();
         this.title = movie.getTitle();
         this.description = movie.getDescription();
         this.ageRestriction = movie.getAgeRestriction();
