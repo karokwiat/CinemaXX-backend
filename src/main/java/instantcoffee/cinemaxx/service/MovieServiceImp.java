@@ -7,9 +7,6 @@ import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.HashSet;
-
 @Service
 public class MovieServiceImp implements MovieService{
 
@@ -22,7 +19,7 @@ public class MovieServiceImp implements MovieService{
 
     @Override
     public MovieDTOCustomer getById(int id) {
-        return MovieDTOCustomer.entityToDTO(movieRepo.findById(id));
+        return MovieDTOCustomer.entityToDTO(movieRepo.findById(id).get());
     }
 
     @Override
@@ -32,11 +29,21 @@ public class MovieServiceImp implements MovieService{
     }
 
     @Override
-    @Transactional
     public void edit(MovieDTO movie) {
         Movie newMovie = MovieDTO.DTOtoEntity(movie);
-        System.out.println(newMovie);
-        System.out.println(movieRepo.findById(newMovie.getMovieId()));
-        //movieRepo.save();
+        Movie oldMovie = movieRepo.findById(movie.getMovieId()).get();
+        if(newMovie.getTitle().isEmpty())
+            newMovie.setTitle(oldMovie.getTitle());
+        if(newMovie.getAgeRestriction() == 0)
+            newMovie.setAgeRestriction(oldMovie.getAgeRestriction());
+        if(newMovie.getDescription().isEmpty())
+            newMovie.setDescription(oldMovie.getDescription());
+        if(newMovie.getStartDate() == null)
+            newMovie.setStartDate(oldMovie.getStartDate());
+        if(newMovie.getEndDate() == null)
+            newMovie.setEndDate(oldMovie.getEndDate());
+        if(newMovie.getRating() == 0)
+            newMovie.setRating(oldMovie.getRating());
+        movieRepo.save(newMovie);
     }
 }

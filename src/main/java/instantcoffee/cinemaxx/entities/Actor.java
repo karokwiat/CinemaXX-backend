@@ -1,14 +1,19 @@
 package instantcoffee.cinemaxx.entities;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "actors")
-public class Actor {
+public class Actor implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +24,8 @@ public class Actor {
   @Column(name = "lastName")
   private String lastName;
 
-  @ManyToMany(fetch = FetchType.LAZY, mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
-  private Set<Movie> actorsHasMovies;
+  @JsonIgnore
+  @ManyToMany(mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
+  private Set<Movie> actorsHasMovies = new HashSet<>();
 
 }

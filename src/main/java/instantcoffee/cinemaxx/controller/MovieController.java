@@ -2,7 +2,6 @@ package instantcoffee.cinemaxx.controller;
 
 import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
-import instantcoffee.cinemaxx.entities.Movie;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
