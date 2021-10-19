@@ -1,15 +1,18 @@
 package instantcoffee.cinemaxx.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@RequiredArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Table(name = "actors")
 public class Actor {
 
@@ -24,8 +27,8 @@ public class Actor {
   @Column(name = "lastName")
   private String lastName;
 
-  @ManyToMany(mappedBy = "actors", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
   @JsonIgnore
-  private Set<Movie> movies;
+  @ManyToMany(mappedBy = "actorsHasMovies", cascade = CascadeType.REMOVE)
+  private Set<Movie> actorsHasMovies = new HashSet<>();
 
 }

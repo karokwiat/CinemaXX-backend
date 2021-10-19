@@ -9,10 +9,8 @@ import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MovieServiceImp implements MovieService{
@@ -52,6 +50,26 @@ public class MovieServiceImp implements MovieService{
         Movie movie = movieRepo.getById(id);
         movieRepo.delete(movie);
     }
+
+    @Override
+    public void edit(MovieDTO movie) {
+        Movie newMovie = MovieDTO.DTOtoEntity(movie);
+        Movie oldMovie = movieRepo.findById(movie.getMovieId()).get();
+        if(newMovie.getTitle().isEmpty())
+            newMovie.setTitle(oldMovie.getTitle());
+        if(newMovie.getAgeRestriction() == 0)
+            newMovie.setAgeRestriction(oldMovie.getAgeRestriction());
+        if(newMovie.getDescription().isEmpty())
+            newMovie.setDescription(oldMovie.getDescription());
+        if(newMovie.getStartDate() == null)
+            newMovie.setStartDate(oldMovie.getStartDate());
+        if(newMovie.getEndDate() == null)
+            newMovie.setEndDate(oldMovie.getEndDate());
+        if(newMovie.getRating() == 0)
+            newMovie.setRating(oldMovie.getRating());
+        movieRepo.save(newMovie);
+    }
+
     @Override
     public List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange) {
         List<Movie> list = movieRepo.getAllByRange(startRange, endRange);

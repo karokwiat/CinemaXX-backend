@@ -23,7 +23,7 @@ public class MovieDTOCustomer {
     private String description;
     private int ageRestriction;
     private int rating;
-    List<ActorDTO> actors; // = new ArrayList<>();
+    List<ActorDTO> actors;
 
 
     public MovieDTOCustomer(Movie movie) {

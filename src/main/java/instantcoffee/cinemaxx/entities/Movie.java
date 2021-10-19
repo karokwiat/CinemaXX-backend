@@ -1,25 +1,19 @@
 package instantcoffee.cinemaxx.entities;
 
-
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Entity
+@RequiredArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Table(name = "movies")
 public class Movie {
 
@@ -46,11 +40,18 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
-    // private LocalDateTime scheduledTime;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
+    private Set<TheaterHall> theaterHallsHasMovies = new HashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "actors_has_movies", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    private Set<Actor> actors;
+    @JoinTable(
+        name = "actors_has_movies",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private Set<Actor> actorsHasMovies = new HashSet<>();
 
-
+    public Set<Actor> getActors() {
+        return actorsHasMovies;
+    }
 }
