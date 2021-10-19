@@ -7,7 +7,11 @@ CinemaXX Project
 
 **Authors:**
 
-* Names here
+Andre Jeronimo Camargo Bittencourt
+Juan Ignacio Nicolai
+Karolina Barbara Kwiatkowska
+Snorri Sigurjonsson
+Veselin Plamenov Ivanov
 
 
 ## Security
