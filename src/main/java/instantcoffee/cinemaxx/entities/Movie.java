@@ -54,4 +54,12 @@ public class Movie {
     public Set<Actor> getActors() {
         return actorsHasMovies;
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "theater_halls_has_movies",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
+    private Set<TimeSlot> timeSlots = new HashSet<>();
+
 }
