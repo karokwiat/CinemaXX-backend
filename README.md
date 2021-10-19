@@ -7,10 +7,10 @@ CinemaXX Project
 
 **Authors:**
 
-Andre Jeronimo Camargo Bittencourt
-Juan Ignacio Nicolai
-Karolina Barbara Kwiatkowska
-Snorri Sigurjonsson
+Andre Jeronimo Camargo Bittencourt |
+Juan Ignacio Nicolai |
+Karolina Barbara Kwiatkowska |
+Snorri Sigurjonsson |
 Veselin Plamenov Ivanov
 
 
