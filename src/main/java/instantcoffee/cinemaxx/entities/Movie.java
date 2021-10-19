@@ -45,6 +45,15 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "poster")
+    private String poster;
+
+    @Column(name = "trailer")
+    private String trailer;
+
     // private LocalDateTime scheduledTime;
 
     @ManyToMany

@@ -19,12 +19,18 @@ public class MovieDTOCustomer {
     private String description;
     private int ageRestriction;
     private int rating;
+    private String image;
+    private String poster;
+    private String trailer;
 
     public MovieDTOCustomer(Movie movie) {
         this.title = movie.getTitle();
         this.description = movie.getDescription();
         this.ageRestriction = movie.getAgeRestriction();
         this.rating = movie.getRating();
+        this.image = movie.getImage();
+        this.image = movie.getPoster();
+        this.image = movie.getTrailer();
     }
 
     private static ModelMapper modelMapper = new ModelMapper();

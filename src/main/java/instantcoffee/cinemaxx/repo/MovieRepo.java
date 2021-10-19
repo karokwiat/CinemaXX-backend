@@ -13,13 +13,13 @@ import instantcoffee.cinemaxx.entities.Movie;
 
 @Repository
 public interface MovieRepo extends JpaRepository<Movie,Integer> {
-    public List<Movie> findByStartDateLessThanEqualAndEndDateGreaterThanEqual(LocalDate startRange, LocalDate endRange);
+    //public List<Movie> findByStartDateLessThanEqualAndEndDateGreaterThanEqual(LocalDate startRange, LocalDate endRange);
 
-/*    @RestResource(
+    @RestResource(
             path = "getAllByRange",
             rel = "getAllByRange")
     @Query("SELECT m FROM Movie m WHERE m.startDate <= :endRange and m.endDate >= :startRange")
     List<Movie> getAllByRange(
             @Param("startRange") LocalDate startRange,
-            @Param("endRange") LocalDate endRange);*/
+            @Param("endRange") LocalDate endRange);
 }

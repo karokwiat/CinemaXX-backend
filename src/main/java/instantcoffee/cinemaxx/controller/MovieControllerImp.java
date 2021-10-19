@@ -35,6 +35,7 @@ public class MovieControllerImp implements MovieController{
     public void deleteMovie(int id) {
         movieService.delete(id);
     }
+
     @PostMapping
     public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
         try {

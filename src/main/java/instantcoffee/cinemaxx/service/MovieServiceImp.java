@@ -60,7 +60,7 @@ public class MovieServiceImp implements MovieService {
         System.out.println(startRange);
         System.out.println(endRange);
 
-        List<Movie> list = movieRepo.findByStartDateLessThanEqualAndEndDateGreaterThanEqual(startRange, endRange);
+        List<Movie> list = movieRepo.getAllByRange(startRange, endRange);
 
         return MovieDTODate.entityToDTO(list);
     }
