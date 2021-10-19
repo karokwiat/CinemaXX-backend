@@ -1,13 +1,10 @@
 package instantcoffee.cinemaxx.controller;
 
-import java.security.Principal;
-
+import instantcoffee.cinemaxx.authentication.User;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import instantcoffee.cinemaxx.authentication.User;
 
 @RestController
 @RequestMapping("/theater")

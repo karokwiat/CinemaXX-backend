@@ -1,8 +1,6 @@
 package instantcoffee.cinemaxx.dto;
 
 import instantcoffee.cinemaxx.entities.Actor;
-import instantcoffee.cinemaxx.entities.Movie;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
