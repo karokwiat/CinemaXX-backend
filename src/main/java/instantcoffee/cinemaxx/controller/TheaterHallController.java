@@ -12,11 +12,11 @@ import instantcoffee.cinemaxx.authentication.User;
 @RestController
 @RequestMapping("/theater")
 public class TheaterHallController {
-  // NOTE(v3s1e): This is how you get the user inside your request :):w
-  @GetMapping
-  public String hello(@AuthenticationPrincipal User user) {
-    System.out.println("HELLO");
-    System.out.println(user);
-    return "hello";
-  }
+    // NOTE(v3s1e): This is how you get the user inside your request :):w
+    @GetMapping
+    public String hello(@AuthenticationPrincipal User user) {
+        System.out.println("HELLO");
+        System.out.println(user);
+        return "hello";
+    }
 }
