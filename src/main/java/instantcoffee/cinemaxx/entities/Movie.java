@@ -20,16 +20,22 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "movie_Id")
     private int movieId;
+
     @Column(name = "title")
     private String title;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "age_restriction")
     private int ageRestriction;
+
     @Column(name = "start_date")
     private LocalDate startDate;
+
     @Column(name = "end_date")
     private LocalDate endDate;
+
     @Column(name = "rating")
     private int rating;
 
