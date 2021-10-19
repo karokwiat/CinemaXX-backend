@@ -1,8 +1,8 @@
 # CinemaXX
 
-KEA - AP Computer Science
-Third Semester
-Instant Coffee Group
+KEA - AP Computer Science\
+Third Semester\
+Instant Coffee Group\
 CinemaXX Project
 
 **Authors:**
