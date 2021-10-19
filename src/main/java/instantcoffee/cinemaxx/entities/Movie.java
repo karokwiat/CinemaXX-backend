@@ -1,24 +1,25 @@
 package instantcoffee.cinemaxx.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
 @Entity
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Table(name = "movies")
-public class Movie implements Serializable {
+public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_Id")
+    @Column(name = "movie_id")
     private int movieId;
 
     @Column(name = "title")
@@ -50,4 +51,7 @@ public class Movie implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private Set<Actor> actorsHasMovies = new HashSet<>();
 
+    public Set<Actor> getActors() {
+        return actorsHasMovies;
+    }
 }

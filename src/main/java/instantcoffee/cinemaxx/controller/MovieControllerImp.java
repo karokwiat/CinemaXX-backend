@@ -5,6 +5,7 @@ import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.dto.MovieDTODate;
 import instantcoffee.cinemaxx.entities.Movie;
+import instantcoffee.cinemaxx.repo.MovieRepo;
 import instantcoffee.cinemaxx.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +23,16 @@ import java.util.List;
 public class MovieControllerImp implements MovieController{
 
     MovieService movieService;
+    MovieRepo movieRepo;
 
     @Autowired
-    public MovieControllerImp(MovieService movieService){
+    public MovieControllerImp(MovieService movieService, MovieRepo movieRepo){
         this.movieService = movieService;
+        this.movieRepo = movieRepo;
     }
 
     @GetMapping("/{id}")
-    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){
-        return movieService.getById(id);
-    }
+    public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){ return movieService.getById(id); }
 
 
     @Override

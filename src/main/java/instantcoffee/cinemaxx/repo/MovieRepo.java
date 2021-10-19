@@ -20,4 +20,10 @@ public interface MovieRepo extends JpaRepository<Movie,Integer> {
     List<Movie> getAllByRange(
             @Param("startRange") LocalDate startRange,
             @Param("endRange") LocalDate endRange);
+
+    /*@RestResource(
+            path = "getMovieInfo",
+            rel = "getMovieInfo")
+    @Query("SELECT m, a FROM Movie m JOIN m.movieId a WHERE m.movieId = :id")
+    Movie getMovieInfo(int id);*/
 }
