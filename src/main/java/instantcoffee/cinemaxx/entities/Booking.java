@@ -17,5 +17,14 @@ public class Booking {
     @Column(name = "booking_id")
     private int bookingId;
 
+    @Column(name = "time_slots_id")
+    private int timeSlotsId;
+
+    @Column(name = "seat_id")
+    private int seatId;
+
+    @Column(name = "user_id")
+    private int userId;
+
 }
 

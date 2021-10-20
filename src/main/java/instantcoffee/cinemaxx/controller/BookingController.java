@@ -13,7 +13,6 @@ public interface BookingController {
     ResponseEntity<String> createBooking(@AuthenticationPrincipal User user, @RequestBody Booking booking);
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void cancelBooking(@PathVariable int id);
+    public ResponseEntity<String> cancelBooking(@AuthenticationPrincipal User user, @PathVariable int id);
 
 }

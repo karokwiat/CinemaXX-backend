@@ -1,5 +1,6 @@
 package instantcoffee.cinemaxx.service;
 
+import instantcoffee.cinemaxx.authentication.User;
 import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.dto.MovieDTODate;
@@ -21,9 +22,12 @@ public class BookingServiceImp implements BookingService{
     BookingRepo bookingRepo;
 
     @Override
-    public void cancelBooking(int id) {
+    public void cancelBooking(User user, int id) throws Exception {
         Booking booking = bookingRepo.getById(id);
-        bookingRepo.delete(booking);
+        if(booking.getUserId() == user.getId())
+            bookingRepo.delete(booking);
+        else
+            throw new Exception();
     }
 
 }

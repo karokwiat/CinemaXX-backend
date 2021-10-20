@@ -21,8 +21,13 @@ public class BookingControllerImp implements BookingController {
     }
 
     @Override
-    public void cancelBooking(int id) {
-        bookingService.cancelBooking(id);
+    public ResponseEntity<String> cancelBooking(User user, int id) {
+        try {
+            bookingService.cancelBooking(user, id);
+            return ResponseEntity.ok("Booking canceled");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to cancel booking");
+        }
     }
 
 }
