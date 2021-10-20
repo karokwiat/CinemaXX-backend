@@ -1,5 +1,6 @@
 package instantcoffee.cinemaxx.controller;
 
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.dto.SeatDTO;
 import instantcoffee.cinemaxx.dto.TimeSlotDTO;
 import instantcoffee.cinemaxx.dto.UserDTO;
@@ -29,8 +30,18 @@ public class UserControllerImp implements UserController {
         this.timeSlotService = timeSlotService;
         this.seatService = seatService;
         this.bookingService = bookingService;
-        
     }
+
+    /*@Override
+    public BookingDTO createBooking(int userId, int timeSlotId, int seatId) {
+        UserDTO userDTO = userService.findById(userId);
+        TimeSlotDTO timeSlotDTO = timeSlotService.findById(timeSlotId);
+        SeatDTO seatDTO = seatService.findById(seatId);
+
+        BookingDTO bookingDTO = new BookingDTO(userDTO.getUsername(), timeSlotDTO.getScheduledTime(), seatDTO.getSeatNumber());
+        bookingService.saveBooking(bookingDTO);
+        return bookingDTO;
+    }*/
 
     @Override
     public Booking createBooking(int userId, int timeSlotId, int seatId) {

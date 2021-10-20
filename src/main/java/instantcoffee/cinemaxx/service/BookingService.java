@@ -1,10 +1,10 @@
 package instantcoffee.cinemaxx.service;
 
-import instantcoffee.cinemaxx.dto.MovieDTO;
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.entities.Booking;
-import instantcoffee.cinemaxx.entities.Movie;
 
 public interface BookingService {
 
+    //void saveBooking(BookingDTO booking);
     void saveBooking(Booking booking);
 }
