@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public interface BookingController {
 
     @PostMapping
-    ResponseEntity<String> createBooking(@AuthenticationPrincipal User user, @RequestBody Booking booking);
+    ResponseEntity<String> createBooking(Booking booking, User user);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -11,5 +11,7 @@ import java.util.List;
 
 public interface BookingService {
 
+    public Booking createBooking(String theaterHallId, String movieId, String timeSlotId, seatId);
+
     public void cancelBooking(int id);
 }

@@ -31,12 +31,10 @@ public class Booking {
     @JoinColumn(name = "seat_id", referencedColumnName = "seat_id")
     private Seat seat;
 
-
-    public Booking(User user, TimeSlot timeSlot, Seat seat){
+    public Booking(User user, TimeSlot timeSlot, Seat seat) {
         this.user = user;
         this.timeSlot = timeSlot;
         this.seat = seat;
     }
 
 }
-
