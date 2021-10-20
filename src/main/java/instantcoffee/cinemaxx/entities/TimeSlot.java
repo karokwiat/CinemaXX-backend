@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -25,6 +26,11 @@ public class TimeSlot {
     @JsonIgnore
     @ManyToMany(mappedBy = "timeSlots", cascade = CascadeType.REMOVE)
     private Set<Movie> movies;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_id", referencedColumnName = "time_slots_id")
+    private Set<Booking> bookings = new HashSet<>();
 
     /*
      * @ManyToMany

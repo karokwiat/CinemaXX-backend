@@ -1,5 +1,6 @@
 package instantcoffee.cinemaxx.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -33,4 +34,8 @@ public class TheaterHall {
     return theaterHallsHasMovies;
   }
 
+  @JsonIgnore
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name = "seat_id", referencedColumnName = "theater_hall_id")
+  private Set<Booking> bookings = new HashSet<>();
 }
