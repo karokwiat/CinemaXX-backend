@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -16,5 +19,10 @@ public class Seat {
     private int seatId;
     @Column(name = "seat_number")
     private String seatNumber;
-
+    @OneToMany(mappedBy = "seat")
+    private Set<Booking> bookingSet = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "theater_hall_id", nullable = false)
+    TheaterHall theaterHall;
 }
+

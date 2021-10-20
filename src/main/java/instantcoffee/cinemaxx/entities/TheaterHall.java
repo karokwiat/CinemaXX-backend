@@ -33,4 +33,7 @@ public class TheaterHall {
     return theaterHallsHasMovies;
   }
 
+  @OneToMany(mappedBy = "theater_halls")
+  private Set<Seat> seatsSet = new HashSet<>();
+
 }
