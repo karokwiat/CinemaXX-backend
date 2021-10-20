@@ -7,7 +7,6 @@ import instantcoffee.cinemaxx.dto.UserDTO;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.error.ResourceNotFoundException;
 import instantcoffee.cinemaxx.repo.MovieRepo;
-import instantcoffee.cinemaxx.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

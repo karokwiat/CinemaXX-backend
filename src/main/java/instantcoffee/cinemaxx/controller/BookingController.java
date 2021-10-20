@@ -1,16 +1,18 @@
 package instantcoffee.cinemaxx.controller;
 
-import instantcoffee.cinemaxx.authentication.User;
-import instantcoffee.cinemaxx.entities.Booking;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import instantcoffee.cinemaxx.authentication.User;
+import instantcoffee.cinemaxx.dto.CreateBookingDTO;
+import instantcoffee.cinemaxx.entities.Booking;
 
 public interface BookingController {
 
-    @PostMapping
-    ResponseEntity<String> createBooking(Booking booking, User user);
+    public ResponseEntity<Booking> createBooking(CreateBookingDTO createBookingDto, User user);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

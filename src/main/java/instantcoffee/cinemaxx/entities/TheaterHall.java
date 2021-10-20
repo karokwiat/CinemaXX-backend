@@ -33,7 +33,6 @@ public class TheaterHall {
     return theaterHallsHasMovies;
   }
 
-  @OneToMany
-  @JoinColumn(mappedBy = "seat")
+  @OneToMany(mappedBy = "user")
   private Set<Seat> seats;
 }
