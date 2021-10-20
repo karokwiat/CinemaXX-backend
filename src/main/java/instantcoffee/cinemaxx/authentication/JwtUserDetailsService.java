@@ -19,7 +19,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     return user;
   }
 
-  public User signUp(String username, String password) {
+  public User signUp(String username, String password, String email) {
     boolean isUsernameTaken = this.userRepository.existsByUsername(username);
 
     if (isUsernameTaken) {
@@ -29,6 +29,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     User user = new User();
     user.setUsername(username);
     user.setPassword(this.passwordEncoder.encode(password));
+    user.setEmail(email);
 
     return this.userRepository.save(user);
   }

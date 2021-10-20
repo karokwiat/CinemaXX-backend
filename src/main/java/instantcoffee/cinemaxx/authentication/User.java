@@ -15,12 +15,18 @@ import java.util.Collection;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Setter
+@Getter
+@Table(name = "users")
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Getter
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "user_id")
   private Long id;
+
+  @Column
+  @NonNull
+  private String email;
 
   @Column
   @NonNull

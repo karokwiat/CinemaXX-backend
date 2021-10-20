@@ -25,8 +25,9 @@ public class AuthenticationController {
     public ResponseEntity<?> signUp(@RequestBody AuthenticationRequest authenticationRequest) {
         String username = authenticationRequest.getUsername();
         String password = authenticationRequest.getPassword();
+        String email = authenticationRequest.getEmail();
 
-        User user = this.jwtUserDetailsService.signUp(username, password);
+        User user = this.jwtUserDetailsService.signUp(username, password, email);
 
         if (user == null) {
             return ResponseEntity.status(401).build();
