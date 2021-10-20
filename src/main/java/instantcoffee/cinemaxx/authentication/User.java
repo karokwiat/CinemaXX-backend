@@ -1,32 +1,32 @@
 package instantcoffee.cinemaxx.authentication;
 
-import java.util.Collection;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import org.springframework.lang.NonNull;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.NonNull;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Setter
+@Getter
+@Table(name = "users")
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Getter
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "user_id")
   private Long id;
+
+  @Column
+  @NonNull
+  private String email;
 
   @Column
   @NonNull
@@ -78,7 +78,7 @@ public class User implements UserDetails {
 
   @Override
   public String toString() {
-    return "User [id=" + id + ", password=" + password + ", username=" + username + "]";
+    return "User [id=" + id + ", password=" + password + ", username=" + username + ", email=" + email + "]";
   }
 
 }
