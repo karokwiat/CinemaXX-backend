@@ -24,9 +24,9 @@ public class BookingControllerImp implements BookingController {
     public ResponseEntity<String> cancelBooking(User user, int id) {
         try {
             bookingService.cancelBooking(user, id);
-            return ResponseEntity.ok("Booking canceled");
+            return ResponseEntity.ok("{message : \"Booking canceled\"}");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Failed to cancel booking");
+            return ResponseEntity.badRequest().body("{message : \"Failed to cancel booking\"}");
         }
     }
 
