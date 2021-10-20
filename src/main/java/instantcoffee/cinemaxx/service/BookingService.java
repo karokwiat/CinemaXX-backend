@@ -1,10 +1,15 @@
 package instantcoffee.cinemaxx.service;
 
-import instantcoffee.cinemaxx.dto.BookingDTO;
-import instantcoffee.cinemaxx.entities.Booking;
+import instantcoffee.cinemaxx.dto.MovieDTO;
+import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
+import instantcoffee.cinemaxx.dto.MovieDTODate;
+import instantcoffee.cinemaxx.entities.Movie;
+
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 
 public interface BookingService {
 
-    //void saveBooking(BookingDTO booking);
-    void saveBooking(Booking booking);
+    public void cancelBooking(int id);
 }

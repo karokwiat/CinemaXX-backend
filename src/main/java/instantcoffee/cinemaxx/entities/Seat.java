@@ -15,15 +15,15 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Table(name = "seat")
 public class Seat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id")
-    private int seatId;
-    @Column(name = "seat_number")
-    private String seatNumber;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "seat_id")
+  private int seatId;
+  @Column(name = "seat_number")
+  private String seatNumber;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "seat")
-    private Set<Booking> bookings = new HashSet<>();
+  @JsonIgnore
+  @OneToMany(mappedBy = "seat")
+  private Set<Booking> bookings = new HashSet<>();
 
 }
