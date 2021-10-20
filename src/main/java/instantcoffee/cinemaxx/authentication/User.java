@@ -78,7 +78,7 @@ public class User implements UserDetails {
 
   @Override
   public String toString() {
-    return "User [id=" + id + ", password=" + password + ", username=" + username + "]";
+    return "User [id=" + id + ", password=" + password + ", username=" + username + ", email=" + email + "]";
   }
 
 }
