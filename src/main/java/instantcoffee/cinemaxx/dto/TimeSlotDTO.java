@@ -14,6 +14,6 @@ import java.time.LocalDateTime;
 
 public class TimeSlotDTO {
 
-    LocalDateTime scheduledTime;
+    private LocalDateTime scheduledTime;
 
 }
