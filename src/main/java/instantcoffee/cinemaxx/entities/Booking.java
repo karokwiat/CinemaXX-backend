@@ -16,16 +16,13 @@ public class Booking {
     @Column(name = "booking_id")
     private int bookingId;
 
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-
     @ManyToOne
     @JoinColumn(name = "time_slot_id")
     private TimeSlot timeSlot;
-
 
     @ManyToOne()
     @JoinColumn(name = "seat_id")
