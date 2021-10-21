@@ -1,6 +1,7 @@
 package instantcoffee.cinemaxx.controller;
 
 import instantcoffee.cinemaxx.authentication.User;
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.dto.BookingDTOClient;
 import instantcoffee.cinemaxx.dto.CreateBookingDTO;
 import instantcoffee.cinemaxx.dto.SeatListDTO;
@@ -47,7 +48,7 @@ public class BookingControllerImp implements BookingController {
 
     @Override
     @Transactional
-    public ResponseEntity<String> editBooking(User user, BookingDTOClient bookingDTO) {
+    public ResponseEntity<String> editBooking(User user, BookingDTO bookingDTO) {
         try {
             bookingService.edit(user, bookingDTO);
             return ResponseEntity.ok("{message: \"Booking successfully updated\"}");

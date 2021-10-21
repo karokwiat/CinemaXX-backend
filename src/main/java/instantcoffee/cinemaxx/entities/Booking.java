@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
 @Table(name = "bookings")
 public class Booking {
     @Id
@@ -22,23 +21,29 @@ public class Booking {
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
 
     @ManyToOne
-    @JoinColumn(name = "time_slot_id", referencedColumnName = "time_slot_id")
+    @JoinColumn(name = "time_slot_id")
     private TimeSlot timeSlot;
 
 
     @ManyToOne()
-    @JoinColumn(name = "seat_id", referencedColumnName = "seat_id")
+    @JoinColumn(name = "seat_id")
     private Seat seat;
 
     public Booking(User user, TimeSlot timeSlot, Seat seat) {
         this.user = user;
         this.timeSlot = timeSlot;
         this.seat = seat;
+    }
+
+    public Booking() {
+        this.user = new User();
+        this.seat = new Seat();
+        this.timeSlot = new TimeSlot();
     }
 
 }

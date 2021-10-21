@@ -1,6 +1,7 @@
 package instantcoffee.cinemaxx.controller;
 
 import instantcoffee.cinemaxx.authentication.User;
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.dto.BookingDTOClient;
 import instantcoffee.cinemaxx.dto.CreateBookingDTO;
 import instantcoffee.cinemaxx.dto.SeatListDTO;
@@ -26,6 +27,6 @@ public interface BookingController {
     public ResponseEntity<String> cancelBooking(@AuthenticationPrincipal User user, @PathVariable int id);
 
     @PutMapping()
-    public ResponseEntity<String> editBooking(@AuthenticationPrincipal User user, @RequestBody BookingDTOClient bookingDTOClient);
+    public ResponseEntity<String> editBooking(@AuthenticationPrincipal User user, @RequestBody BookingDTO bookingDTO);
 
 }

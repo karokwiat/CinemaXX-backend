@@ -1,15 +1,11 @@
 package instantcoffee.cinemaxx.dto;
 
-import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.entities.Seat;
-import instantcoffee.cinemaxx.entities.TheaterHall;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
-import javax.persistence.Id;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

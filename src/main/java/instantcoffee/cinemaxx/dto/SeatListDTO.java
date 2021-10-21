@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import instantcoffee.cinemaxx.entities.Seat;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 

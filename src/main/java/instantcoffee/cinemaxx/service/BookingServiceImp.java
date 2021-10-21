@@ -1,8 +1,8 @@
 package instantcoffee.cinemaxx.service;
 
 import instantcoffee.cinemaxx.authentication.User;
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.dto.BookingDTOClient;
-import instantcoffee.cinemaxx.dto.SeatDTO;
 import instantcoffee.cinemaxx.dto.SeatListDTO;
 import instantcoffee.cinemaxx.entities.*;
 import instantcoffee.cinemaxx.error.BadRequestException;
@@ -107,7 +107,7 @@ public class BookingServiceImp implements BookingService {
 
     @Override
     public void cancel(User user, int id) throws Exception {
-        Booking booking = bookingRepository.getById(id);
+        Booking booking = bookingRepository.findById(id).orElseThrow();
         if(Objects.equals(booking.getUser().getId(), user.getId()))
             bookingRepository.delete(booking);
         else
@@ -115,13 +115,15 @@ public class BookingServiceImp implements BookingService {
     }
 
     @Override
-    public void edit(User user, BookingDTOClient bookingDTOClient) throws Exception {
-        Booking booking = BookingDTOClient.DTOtoEntity(bookingDTOClient);
+    public void edit(User user, BookingDTO bookingDTO) throws Exception {
+        Booking booking = BookingDTO.DTOtoEntity(bookingDTO);
         booking.getUser().setId(user.getId());
-        Booking bookingCompare = bookingRepository.getById(booking.getBookingId());
-        if(Objects.equals(bookingCompare.getUser().getId(), user.getId()))
+        booking.getSeat().setSeatId(bookingDTO.getSeatId());
+        booking.getTimeSlot().setTimeSlotId(bookingDTO.getTimeSlotId());
+        Booking bookingCompare = bookingRepository.findById(booking.getBookingId()).orElseThrow();
+        if(Objects.equals(bookingCompare.getUser().getId(), user.getId())) {
             bookingRepository.save(booking);
-        else
+        }else
             throw new Exception();
     }
 
