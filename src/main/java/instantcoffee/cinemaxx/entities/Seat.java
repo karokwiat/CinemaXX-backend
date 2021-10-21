@@ -1,13 +1,22 @@
 package instantcoffee.cinemaxx.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -25,5 +34,8 @@ public class Seat {
   @JsonIgnore
   @OneToMany(mappedBy = "seat")
   private Set<Booking> bookings = new HashSet<>();
+
+  @ManyToOne
+  private TheaterHall theaterHall;
 
 }

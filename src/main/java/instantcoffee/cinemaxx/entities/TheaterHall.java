@@ -33,4 +33,6 @@ public class TheaterHall {
     return theaterHallsHasMovies;
   }
 
+  @OneToMany(mappedBy = "theaterHall")
+  private Set<Seat> seats;
 }
