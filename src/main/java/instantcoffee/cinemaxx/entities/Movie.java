@@ -59,7 +59,7 @@ public class Movie {
     @JoinTable(
             name = "theater_halls_has_movies",
             joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "time_slots_id"))
+            inverseJoinColumns = @JoinColumn(name = "time_slot_id"))
     private Set<TimeSlot> timeSlots = new HashSet<>();
 
 }
