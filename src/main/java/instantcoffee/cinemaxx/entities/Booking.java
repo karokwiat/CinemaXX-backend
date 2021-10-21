@@ -36,5 +36,5 @@ public class Booking {
         this.timeSlot = timeSlot;
         this.seat = seat;
     }
-    
+
 }

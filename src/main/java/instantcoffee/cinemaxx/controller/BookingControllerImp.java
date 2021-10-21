@@ -22,15 +22,7 @@ public class BookingControllerImp implements BookingController {
 
     @Autowired
     BookingService bookingService;
-    @Autowired
-    BookingRepo bookingRepo;
 
-
-    @Override
-    public List<Booking> getBookings(){
-        //return bookingService.findAll();
-        return bookingRepo.findAll();
-    };
 
     @Override
     public ResponseEntity<BookingDTO> createBooking(@RequestBody CreateBookingDTO createBookingDto,

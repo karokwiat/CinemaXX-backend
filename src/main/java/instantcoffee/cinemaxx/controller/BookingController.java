@@ -7,15 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import instantcoffee.cinemaxx.authentication.User;
 import instantcoffee.cinemaxx.dto.CreateBookingDTO;
-import instantcoffee.cinemaxx.entities.Booking;
-
-import java.util.List;
 
 public interface BookingController {
-
-
-    @GetMapping
-    public List<Booking> getBookings();
 
     @PostMapping
     public ResponseEntity<BookingDTO> createBooking(CreateBookingDTO createBookingDto, User user);

@@ -29,11 +29,6 @@ public class BookingServiceImp implements BookingService {
     private final SeatRepo seatRepository;
 
     @Override
-    public List<BookingDTO> findAll() {
-        return BookingDTO.entityToDTO(bookingRepository.findAll());
-    }
-
-    @Override
     public BookingDTO createBooking(User user, String theaterHallId, String movieId, String timeSlotId, String seatId) {
         TheaterHall theaterHall = theaterHallRepository
             .findById(Integer.parseInt(theaterHallId))
