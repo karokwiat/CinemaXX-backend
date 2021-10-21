@@ -1,28 +1,39 @@
 package instantcoffee.cinemaxx.controller;
 
 import instantcoffee.cinemaxx.authentication.User;
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.dto.CreateBookingDTO;
 import instantcoffee.cinemaxx.entities.Booking;
+import instantcoffee.cinemaxx.repo.BookingRepo;
 import instantcoffee.cinemaxx.service.BookingService;
 import lombok.AllArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/bookings")
 @AllArgsConstructor
 public class BookingControllerImp implements BookingController {
 
+    @Autowired
     BookingService bookingService;
+    @Autowired
+    BookingRepo bookingRepo;
 
-    @PostMapping("/create")
+
     @Override
-    public ResponseEntity<Booking> createBooking(@RequestBody CreateBookingDTO createBookingDto,
+    public List<Booking> getBookings(){
+        //return bookingService.findAll();
+        return bookingRepo.findAll();
+    };
+
+    @Override
+    public ResponseEntity<BookingDTO> createBooking(@RequestBody CreateBookingDTO createBookingDto,
             @AuthenticationPrincipal User user) {
 
         return ResponseEntity.ok(

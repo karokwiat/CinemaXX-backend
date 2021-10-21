@@ -19,15 +19,15 @@ public class Booking {
     @Column(name = "booking_id")
     private int bookingId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "time_slots_id", referencedColumnName = "time_slots_id")
     private TimeSlot timeSlot;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "seat_id", referencedColumnName = "seat_id")
     private Seat seat;
 
@@ -36,5 +36,5 @@ public class Booking {
         this.timeSlot = timeSlot;
         this.seat = seat;
     }
-
+    
 }

@@ -1,5 +1,6 @@
 package instantcoffee.cinemaxx.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -33,6 +34,7 @@ public class TheaterHall {
     return theaterHallsHasMovies;
   }
 
+  @JsonIgnore
   @OneToMany(mappedBy = "theaterHall")
   private Set<Seat> seats;
 }

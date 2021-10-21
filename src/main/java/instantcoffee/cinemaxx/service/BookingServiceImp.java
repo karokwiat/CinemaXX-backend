@@ -1,5 +1,7 @@
 package instantcoffee.cinemaxx.service;
 
+import instantcoffee.cinemaxx.dto.BookingDTO;
+import instantcoffee.cinemaxx.dto.CreateBookingDTO;
 import org.springframework.stereotype.Service;
 
 import instantcoffee.cinemaxx.authentication.User;
@@ -15,6 +17,8 @@ import instantcoffee.cinemaxx.repo.SeatRepo;
 import instantcoffee.cinemaxx.repo.TheaterHallRepo;
 import lombok.AllArgsConstructor;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class BookingServiceImp implements BookingService {
@@ -25,11 +29,16 @@ public class BookingServiceImp implements BookingService {
     private final SeatRepo seatRepository;
 
     @Override
-    public Booking createBooking(User user, String theaterHallId, String movieId, String timeSlotId, String seatId) {
+    public List<BookingDTO> findAll() {
+        return BookingDTO.entityToDTO(bookingRepository.findAll());
+    }
+
+    @Override
+    public BookingDTO createBooking(User user, String theaterHallId, String movieId, String timeSlotId, String seatId) {
         TheaterHall theaterHall = theaterHallRepository
             .findById(Integer.parseInt(theaterHallId))
             .orElseThrow(() -> new BadRequestException("Perhaps you should try with a `theaterHallId` that exists?!"));
-
+        System.out.println();
         Movie movie = theaterHall
             .getMovies()
             .stream()
@@ -72,7 +81,9 @@ public class BookingServiceImp implements BookingService {
 
         Booking booking = new Booking(user, timeSlot, seat);
 
-        return booking;
+        bookingRepository.save(booking);
+
+        return BookingDTO.entityToDTO(booking);
     }
 
     @Override

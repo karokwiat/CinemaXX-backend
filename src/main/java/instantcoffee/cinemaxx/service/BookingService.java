@@ -1,8 +1,6 @@
 package instantcoffee.cinemaxx.service;
 
-import instantcoffee.cinemaxx.dto.MovieDTO;
-import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
-import instantcoffee.cinemaxx.dto.MovieDTODate;
+import instantcoffee.cinemaxx.dto.*;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.entities.Booking;
 import instantcoffee.cinemaxx.authentication.User;
@@ -13,7 +11,9 @@ import java.util.List;
 
 public interface BookingService {
 
-    public Booking createBooking(User user, String theaterHallId, String movieId, String timeSlotId, String seatId);
+    List<BookingDTO> findAll();
+
+    public BookingDTO createBooking(User user, String theaterHallId, String movieId, String timeSlotId, String seatId);
 
     public void cancelBooking(int id);
 }

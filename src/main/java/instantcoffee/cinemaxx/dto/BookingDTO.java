@@ -9,6 +9,8 @@ import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @NoArgsConstructor
@@ -44,6 +46,10 @@ public class BookingDTO {
     public static Booking DTOtoEntity(BookingDTO bookingDTO) {
         Booking booking = modelMapper.map(bookingDTO, Booking.class);
         return booking;
+    }
+
+    public static List<BookingDTO> entityToDTO(List<Booking> bookings) {
+        return bookings.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
     }
 
 }
