@@ -1,10 +1,7 @@
 package instantcoffee.cinemaxx.service;
 
-import instantcoffee.cinemaxx.dto.SeatDTO;
 import instantcoffee.cinemaxx.dto.TimeSlotDTO;
-import instantcoffee.cinemaxx.entities.TimeSlot;
 import instantcoffee.cinemaxx.error.ResourceNotFoundException;
-import instantcoffee.cinemaxx.repo.SeatRepo;
 import instantcoffee.cinemaxx.repo.TimeSlotRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

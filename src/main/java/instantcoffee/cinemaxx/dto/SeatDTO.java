@@ -1,18 +1,38 @@
 package instantcoffee.cinemaxx.dto;
 
-import instantcoffee.cinemaxx.authentication.User;
+import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.entities.Seat;
+import instantcoffee.cinemaxx.entities.TheaterHall;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
+import javax.persistence.Id;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Getter
 @Setter
 public class SeatDTO {
+    private int seatId;
     private String seatNumber;
+    private int theaterHallId;
+
+    public SeatDTO(Seat seat) {
+        this.seatId = seat.getSeatId();
+        this.seatNumber = seat.getSeatNumber();
+        this.theaterHallId = seat.getTheaterHall().getTheaterHallId();
+    }
+
+    public SeatDTO(int seatId, String seatNumber, int theaterHallId) {
+        this.seatId = seatId;
+        this.seatNumber = seatNumber;
+        this.theaterHallId = theaterHallId;
+    }
+
     private static ModelMapper modelMapper = new ModelMapper();
 
     public static SeatDTO entityToDTO(Seat seat) {
@@ -20,8 +40,8 @@ public class SeatDTO {
         return seatDTO;
     }
 
-    public static Seat DTOtoEntity(SeatDTO seatDTO) {
-        Seat seat = modelMapper.map(seatDTO, Seat.class);
-        return seat;
+    public static List<SeatDTO> entityToDTO(List<Seat> seats) {
+        return seats.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
     }
+
 }

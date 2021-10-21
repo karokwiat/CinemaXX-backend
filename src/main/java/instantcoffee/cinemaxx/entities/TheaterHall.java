@@ -37,4 +37,5 @@ public class TheaterHall {
   @JsonIgnore
   @OneToMany(mappedBy = "theaterHall")
   private Set<Seat> seats;
+
 }

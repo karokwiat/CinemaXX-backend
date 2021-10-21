@@ -20,6 +20,6 @@ public interface MovieService {
     public void delete(int id);
 
     @Transactional
-    public void edit(MovieDTO movie);
+    public void edit(MovieDTO movieDTO);
 
 }

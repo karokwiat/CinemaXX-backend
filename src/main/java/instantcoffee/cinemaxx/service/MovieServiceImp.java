@@ -3,7 +3,6 @@ package instantcoffee.cinemaxx.service;
 import instantcoffee.cinemaxx.dto.MovieDTO;
 import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.dto.MovieDTODate;
-import instantcoffee.cinemaxx.dto.UserDTO;
 import instantcoffee.cinemaxx.entities.Movie;
 import instantcoffee.cinemaxx.error.ResourceNotFoundException;
 import instantcoffee.cinemaxx.repo.MovieRepo;
@@ -53,9 +52,9 @@ public class MovieServiceImp implements MovieService{
     }
 
     @Override
-    public void edit(MovieDTO movie) {
-        Movie newMovie = MovieDTO.DTOtoEntity(movie);
-        Movie oldMovie = movieRepo.findById(movie.getMovieId()).get();
+    public void edit(MovieDTO movieDTO) {
+        Movie newMovie = MovieDTO.DTOtoEntity(movieDTO);
+        Movie oldMovie = movieRepo.findById(movieDTO.getMovieId()).get();
         if(newMovie.getTitle().isEmpty())
             newMovie.setTitle(oldMovie.getTitle());
         if(newMovie.getAgeRestriction() == 0)

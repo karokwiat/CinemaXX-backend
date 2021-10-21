@@ -31,11 +31,4 @@ public class TimeSlot {
     @OneToMany(mappedBy = "timeSlot")
     private Set<Booking> bookings = new HashSet<>();
 
-    /*
-     * @ManyToMany
-     *
-     * @JoinTable( name = "theater_halls_has_movies", joinColumns = @JoinColumn(name
-     * = "time_slot_id"), inverseJoinColumns = @JoinColumn(name = "movies") )
-     * private Set<Movie> movies;
-     */
 }

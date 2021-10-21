@@ -1,8 +1,6 @@
 package instantcoffee.cinemaxx.dto;
 
 import instantcoffee.cinemaxx.entities.Booking;
-import instantcoffee.cinemaxx.entities.Seat;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,22 +17,17 @@ import java.util.stream.Collectors;
 public class BookingDTO {
 
     private int bookingId;
-    private String userEmail;
     private LocalDateTime scheduledTime;
-    private String seatNumber;
-
-    public BookingDTO(String userEmail, LocalDateTime scheduledTime, String seatNumber){
-        this.userEmail = userEmail;
-        this.scheduledTime = scheduledTime;
-        this.seatNumber = seatNumber;
-    }
+    private int seatId;
+    private int timeSlotId;
 
     public BookingDTO(Booking booking){
         this.bookingId = booking.getBookingId();
-        this.userEmail = booking.getUser().getEmail();
+        this.seatId = getSeatId();
         this.scheduledTime = booking.getTimeSlot().getScheduledTime();
-        this.seatNumber = booking.getSeat().getSeatNumber();
+        this.timeSlotId = booking.getTimeSlot().getTimeSlotId();
     }
+
 
     private static ModelMapper modelMapper = new ModelMapper();
 
@@ -43,13 +36,17 @@ public class BookingDTO {
         return bookingDTO;
     }
 
+    public static List<BookingDTO> entityToDTO(List<Booking> bookings) {
+        return bookings.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
+    }
+
     public static Booking DTOtoEntity(BookingDTO bookingDTO) {
         Booking booking = modelMapper.map(bookingDTO, Booking.class);
         return booking;
     }
 
-    public static List<BookingDTO> entityToDTO(List<Booking> bookings) {
-        return bookings.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
-    }
+
+
+
 
 }

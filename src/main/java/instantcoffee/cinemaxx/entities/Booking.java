@@ -5,6 +5,7 @@ import instantcoffee.cinemaxx.authentication.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -19,15 +20,18 @@ public class Booking {
     @Column(name = "booking_id")
     private int bookingId;
 
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
+
 
     @ManyToOne
     @JoinColumn(name = "time_slot_id", referencedColumnName = "time_slot_id")
     private TimeSlot timeSlot;
 
-    @ManyToOne
+
+    @ManyToOne()
     @JoinColumn(name = "seat_id", referencedColumnName = "seat_id")
     private Seat seat;
 

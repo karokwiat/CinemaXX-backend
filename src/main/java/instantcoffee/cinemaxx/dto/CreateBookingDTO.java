@@ -1,14 +1,7 @@
 package instantcoffee.cinemaxx.dto;
 
-import instantcoffee.cinemaxx.entities.Actor;
-import instantcoffee.cinemaxx.entities.Booking;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.modelmapper.ModelMapper;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
