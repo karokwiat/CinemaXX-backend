@@ -18,5 +18,7 @@ public class Seat {
     private int seatId;
     @Column(name = "seat_number")
     private String seatNumber;
+    @Column(name = "theater_hall_id")
+    private int theaterHallId;
 
 }
