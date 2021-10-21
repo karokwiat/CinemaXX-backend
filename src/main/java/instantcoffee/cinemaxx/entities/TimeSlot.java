@@ -28,7 +28,7 @@ public class TimeSlot {
     private Set<Movie> movies;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "timeSlot")
+    @OneToMany(mappedBy = "timeSlot", cascade = CascadeType.REMOVE)
     private Set<Booking> bookings = new HashSet<>();
 
 }

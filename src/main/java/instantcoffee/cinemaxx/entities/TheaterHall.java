@@ -35,7 +35,7 @@ public class TheaterHall {
   }
 
   @JsonIgnore
-  @OneToMany(mappedBy = "theaterHall")
+  @OneToMany(mappedBy = "theaterHall", cascade = CascadeType.REMOVE)
   private Set<Seat> seats;
 
 }

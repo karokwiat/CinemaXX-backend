@@ -23,7 +23,7 @@ public class Seat {
   private String seatNumber;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "seat")
+  @OneToMany(mappedBy = "seat", cascade = CascadeType.REMOVE)
   private Set<Booking> bookings = new HashSet<>();
 
   @ManyToOne
