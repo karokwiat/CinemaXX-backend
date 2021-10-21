@@ -19,6 +19,9 @@ public class MovieDTOCustomer {
     private int ageRestriction;
     private int rating;
     List<ActorDTO> actors;
+    private String image;
+    private String poster;
+    private String trailer;
 
 
     public MovieDTOCustomer(Movie movie) {
@@ -27,6 +30,9 @@ public class MovieDTOCustomer {
         this.ageRestriction = movie.getAgeRestriction();
         this.rating = movie.getRating();
         actors = movie.getActors().stream().map(actor -> new ActorDTO(actor.getFirstName(), actor.getLastName())).collect(Collectors.toList());
+        this.image = movie.getImage();
+        this.poster = movie.getPoster();
+        this.trailer = movie.getTrailer();
     }
 
     private static ModelMapper modelMapper = new ModelMapper();

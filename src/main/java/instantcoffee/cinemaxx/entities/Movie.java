@@ -40,6 +40,15 @@ public class Movie {
     @Column(name = "rating")
     private int rating;
 
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "poster")
+    private String poster;
+
+    @Column(name = "trailer")
+    private String trailer;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "theaterHallsHasMovies", cascade = CascadeType.REMOVE)
     private Set<TheaterHall> theaterHallsHasMovies = new HashSet<>();
