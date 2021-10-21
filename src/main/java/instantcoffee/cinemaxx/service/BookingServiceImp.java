@@ -9,8 +9,6 @@ import instantcoffee.cinemaxx.entities.TimeSlot;
 import instantcoffee.cinemaxx.repo.BookingRepo;
 import instantcoffee.cinemaxx.repo.SeatRepo;
 import instantcoffee.cinemaxx.repo.TimeSlotRepo;
-import org.apache.tomcat.jni.Local;
-import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
