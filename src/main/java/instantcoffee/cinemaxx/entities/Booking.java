@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table(name = "booking")
+@Table(name = "bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Booking {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "time_slots_id", referencedColumnName = "time_slots_id")
+    @JoinColumn(name = "time_slot_id", referencedColumnName = "time_slot_id")
     private TimeSlot timeSlot;
 
     @ManyToOne

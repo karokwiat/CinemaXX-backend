@@ -18,7 +18,7 @@ import java.util.Set;
 public class TimeSlot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "time_slots_id")
+    @Column(name = "time_slot_id")
     private int timeSlotId;
     @Column(name = "scheduled_time")
     private LocalDateTime scheduledTime;
@@ -35,7 +35,7 @@ public class TimeSlot {
      * @ManyToMany
      *
      * @JoinTable( name = "theater_halls_has_movies", joinColumns = @JoinColumn(name
-     * = "time_slots_id"), inverseJoinColumns = @JoinColumn(name = "movies") )
+     * = "time_slot_id"), inverseJoinColumns = @JoinColumn(name = "movies") )
      * private Set<Movie> movies;
      */
 }
