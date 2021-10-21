@@ -1,19 +1,11 @@
 package instantcoffee.cinemaxx.service;
 
 import instantcoffee.cinemaxx.authentication.User;
-import instantcoffee.cinemaxx.dto.MovieDTO;
-import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
-import instantcoffee.cinemaxx.dto.MovieDTODate;
+import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.entities.Booking;
-import instantcoffee.cinemaxx.entities.Movie;
-import instantcoffee.cinemaxx.error.ResourceNotFoundException;
 import instantcoffee.cinemaxx.repo.BookingRepo;
-import instantcoffee.cinemaxx.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class BookingServiceImp implements BookingService{
@@ -22,10 +14,21 @@ public class BookingServiceImp implements BookingService{
     BookingRepo bookingRepo;
 
     @Override
-    public void cancelBooking(User user, int id) throws Exception {
+    public void cancel(User user, int id) throws Exception {
         Booking booking = bookingRepo.getById(id);
         if(booking.getUserId() == user.getId())
             bookingRepo.delete(booking);
+        else
+            throw new Exception();
+    }
+
+    @Override
+    public void edit(User user, BookingDTO bookingDTO) throws Exception {
+        Booking booking = BookingDTO.DTOtoEntity(bookingDTO);
+        booking.setUserId(user.getId().intValue());
+        Booking bookingCompare = bookingRepo.getById(booking.getBookingId());
+        if(bookingCompare.getUserId() == user.getId())
+            bookingRepo.save(booking);
         else
             throw new Exception();
     }

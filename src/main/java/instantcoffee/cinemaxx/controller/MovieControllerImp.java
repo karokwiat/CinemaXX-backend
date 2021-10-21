@@ -30,24 +30,33 @@ public class MovieControllerImp implements MovieController{
     @GetMapping("/{id}")
     public MovieDTOCustomer getMovieInfo(@PathVariable("id") int id){ return movieService.getById(id); }
 
-
     @Override
-    public void deleteMovie(int id) {
-        movieService.delete(id);
+    public ResponseEntity<String> deleteMovie(int id) {
+        try {
+            movieService.delete(id);
+            return ResponseEntity.ok("{message: \"Movie successfully deleted\"}");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("{message: \"Failed to delete movie\"}");
+        }
     }
 
     @Override
-    public void editMovie(MovieDTO movie) {
-        movieService.edit(movie);
+    public ResponseEntity<String> editMovie(MovieDTO movieDTO) {
+        try {
+            movieService.edit(movieDTO);
+            return ResponseEntity.ok("{message: \"Movie successfully updated\"}");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("{message: \"Failed to update movie\"}");
+        }
     }
 
     @PostMapping
     public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
         try {
             movieService.createMovie(movie);
-            return ResponseEntity.ok("Movie successfully added");
+            return ResponseEntity.ok("{message: \"Movie successfully added\"}");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Starting date is after Ending date, please check.");
+            return ResponseEntity.badRequest().body("{message: \"Starting date is after Ending date, please check\"}");
         }
     }
     @Override

@@ -5,7 +5,6 @@ import instantcoffee.cinemaxx.dto.MovieDTOCustomer;
 import instantcoffee.cinemaxx.dto.MovieDTODate;
 import instantcoffee.cinemaxx.entities.Movie;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,12 +20,10 @@ public interface MovieController {
     ResponseEntity<String> postMovie(@RequestBody Movie movie);
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteMovie(@PathVariable int id);
+    public ResponseEntity<String> deleteMovie(@PathVariable int id);
 
     @PutMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void editMovie(@RequestBody MovieDTO movie);
+    public ResponseEntity<String> editMovie(@RequestBody MovieDTO movie);
 
     @GetMapping
     List<MovieDTODate> getAllByRange(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startRange, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endRange);
