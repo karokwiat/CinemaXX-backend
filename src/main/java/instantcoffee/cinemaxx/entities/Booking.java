@@ -1,11 +1,8 @@
 package instantcoffee.cinemaxx.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import instantcoffee.cinemaxx.authentication.User;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
