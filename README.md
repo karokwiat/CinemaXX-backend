@@ -7,8 +7,24 @@ CinemaXX Project
 
 **Authors:**
 
-* Names here
+Andre Jeronimo Camargo Bittencourt | Juan Ignacio Nicolai | Karolina Barbara Kwiatkowska | Snorri Sigurjonsson | Veselin Plamenov Ivanov
 
+### Swagger Documentation
+
+http://localhost:8080/api/swagger
+
+### Create booking
+
+POST /api/booking/create takes in `theaterHallId`, `movieId`, `timeSlotId` and `seatId`
+
+We query the database for a Theater Hall with the given `theaterHallId` and if
+it exists we get the Movies that are shown in that Theater Hall. We filter out
+the movies that do not match the given `movieId`. If there is a Movie left, we
+take the available Time Slots and filter out the ones that do not match the
+given `timeSlotId`. If there is a Time Slot left, we check if the seat with the
+given `seatId` is taken by taking the bookings of the Time Slot and filtering
+out the ones that do not match the `seatId`. If the Seat is not taken, we check
+if the Theater Hall has that seat and if it does we create a new Booking.
 
 ## Security
 
@@ -19,6 +35,8 @@ Right now every endpoint requires authentication except:
 * `/api/swagger`
 * `/api/api-docs`
 
+There are no roles implemented at the moment, meaning if you are signed up, you
+can perform all available operations.
 
 ### How to sign up
 
@@ -31,6 +49,7 @@ POST `/api/authenticate/login` with `username` and `password`
 
 You will get a token back.
 
+There is OpenAPI specification for the two endpoints mentioned above.
 
 ### Authenticate
 
@@ -47,3 +66,36 @@ public String hello(@AuthenticationPrincipal User user) {
   return "hello";
 }
 ```
+
+### Individual contribution
+
+Andre : andr01a0
+- User Story: delete movies.
+- User Story: edit movies.
+- User Story: cancel bookings.
+- User Story: edit bookings.
+- AMAZON AWS EC2 instance server with DevOps - CI/CD with jenkins building from GitHub into docker containers using environment variables.
+- Pair-programming with team mates to solve problems encountered.
+
+Juani : juaninicolai
+- I performed as Scrum Master and directed all the Daily meetings.
+- Built our Kanban board to follow the team progress.
+- I built the “create movie” endpoint. Andre helped me to test de validation of it (pair programming).
+- I built the “get free / booked seat list” with Andre’s guidance (pair programming).
+- I participated in the overall testing of the endpoints before submitting to the PO.
+
+Karolina : karokwiat
+- the DDL and DML.
+- get-movie-info endpoint.
+- I did the pair programming working on the endpoint where all movie-titles, schedule-times, age requirements for all cinema halls in the movie theatre in question are returned for a given start- and end date.
+- I participated in creating the create-booking endpoint.
+
+Snorri : SnorriSig
+- Endpoint where all movie-titles, schedule-times, age requirements for all cinema halls in the movie theater in question are returned for a given start- and end date, typically a week. Karolina assisted me with MYSQL logic and Veselin with DTO.
+- Add Link to image(s) + trailer(s) and poster(s) to "Get movie info".
+- Worked on entity relations with others.
+
+Veselin : v3s1e
+- Implemented Authentication with Spring Security.
+- Participated in the creation of the endpoint to book a seat for a movie.
+- Helped the team with problems we encountered during the sprint.
