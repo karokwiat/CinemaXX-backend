@@ -14,7 +14,6 @@ Andre Jeronimo Camargo Bittencourt | Juan Ignacio Nicolai | Karolina Barbara Kwi
 http://localhost:9090/api/swagger
 
 ### Production Server : Amazon AWS EC2 instance
-http://54.87.226.126:9090
 
 ### Create booking
 
