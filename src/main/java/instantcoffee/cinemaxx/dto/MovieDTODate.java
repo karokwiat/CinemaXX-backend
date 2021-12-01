@@ -16,11 +16,13 @@ import java.util.stream.Collectors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieDTODate {
 
+    private int movieId;
     private String title;
     private int ageRestriction;
     private Set<TimeSlotDTO> timeSlots;
 
-    public MovieDTODate(String title, int ageRestriction, Set<TimeSlotDTO> timeSlots) {
+    public MovieDTODate(int movieId, String title, int ageRestriction, Set<TimeSlotDTO> timeSlots) {
+        this.movieId = movieId;
         this.title = title;
         this.ageRestriction = ageRestriction;
         this.timeSlots = timeSlots;
@@ -29,7 +31,7 @@ public class MovieDTODate {
     public static List<MovieDTODate> entityToDTO(List<Movie> movies) {
         return movies.stream()
                 .map(x ->
-                        new MovieDTODate(x.getTitle(), x.getAgeRestriction(),
+                        new MovieDTODate(x.getMovieId(), x.getTitle(), x.getAgeRestriction(),
                             x.getTimeSlots().stream()
                         .map(c ->
                             new TimeSlotDTO(c.getScheduledTime()))
