@@ -29,7 +29,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.csrf().disable().authorizeRequests()
         .antMatchers("/authenticate/signup", "/authenticate/login", "/api-docs", "/api-docs/swagger-config", "/swagger",
-            "/swagger-ui/*")
+            "/swagger-ui/*", "/movie", "/movie/*")
         .permitAll().anyRequest().authenticated().and().exceptionHandling()
         .authenticationEntryPoint(this.jwtAuthenticationEntryPoint).and().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
