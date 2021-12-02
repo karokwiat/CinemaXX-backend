@@ -23,6 +23,7 @@ public class MovieDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private int rating;
+    private String poster;
 
     public MovieDTO(Movie movie) {
         this.movieId = movie.getMovieId();
@@ -32,6 +33,7 @@ public class MovieDTO {
         this.startDate = movie.getStartDate();
         this.endDate = movie.getEndDate();
         this.rating = movie.getRating();
+        this.poster = movie.getPoster();
     }
 
     private static ModelMapper modelMapper = new ModelMapper();

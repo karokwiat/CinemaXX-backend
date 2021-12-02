@@ -46,6 +46,7 @@ public class AuthenticationController {
         String password = authenticationRequest.getPassword();
 
         String token = this.jwtUserDetailsService.login(username, password);
+        System.out.println(token);
 
         if (token == null) {
             return ResponseEntity.status(401).build();
