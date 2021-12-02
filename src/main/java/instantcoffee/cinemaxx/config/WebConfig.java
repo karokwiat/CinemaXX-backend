@@ -14,7 +14,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:5500",
-                        "http://127.0.0.1:5500")
+                        "http://127.0.0.1:5500",
+                        "https://holbaek-cinemaxx.surge.sh")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                 .allowCredentials(true)
                 .maxAge(3600); //1 hour
