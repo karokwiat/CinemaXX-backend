@@ -54,4 +54,20 @@ public class AuthenticationController {
 
         return ResponseEntity.ok(new LoginResponse(token));
     }
+
+    @PostMapping("/check-token")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Token is valid", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CheckTokenRequest.class)) }),
+            @ApiResponse(responseCode = "401", description = "Token is invalid", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = CheckTokenResponse.class)) }) })
+    public ResponseEntity<?> checkToken(@RequestBody CheckTokenRequest checkTokenRequest) {
+        boolean isValid = this.jwtUserDetailsService.checkToken(checkTokenRequest.token);
+
+        if (isValid) {
+            return ResponseEntity.ok(new CheckTokenResponse("valid"));
+        }
+
+        return ResponseEntity.status(401).body(new CheckTokenResponse("invalid"));
+    }
 }
