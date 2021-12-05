@@ -20,7 +20,9 @@ hosted
 * frontend - cinema customer: http://54.175.181.176:5500/ 
 * frontend - admin: http://54.175.181.176:5501/
 
-* video: https://www.youtube.com/watch?v=e6-1wPW-9Nc&ab_channel=JuanNicolai
+videos
+* cinema customer: https://www.youtube.com/watch?v=e6-1wPW-9Nc&ab_channel=JuanNicolai
+* admin: https://www.youtube.com/watch?v=qP7Lm0_pwjg&ab_channel=JuanNicolai
 
 ### Swagger Documentation
 
