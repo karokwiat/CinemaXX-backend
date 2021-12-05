@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,8 @@ public class MovieDTOCustomer {
     private String title;
     private String description;
     private int ageRestriction;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int rating;
     List<ActorDTO> actors;
     private String image;
@@ -28,6 +31,8 @@ public class MovieDTOCustomer {
         this.title = movie.getTitle();
         this.description = movie.getDescription();
         this.ageRestriction = movie.getAgeRestriction();
+        this.startDate = movie.getStartDate();
+        this.endDate = movie.getEndDate();
         this.rating = movie.getRating();
         actors = movie.getActors().stream().map(actor -> new ActorDTO(actor.getFirstName(), actor.getLastName())).collect(Collectors.toList());
         this.image = movie.getImage();

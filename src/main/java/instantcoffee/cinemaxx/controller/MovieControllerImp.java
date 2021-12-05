@@ -34,9 +34,9 @@ public class MovieControllerImp implements MovieController{
     public ResponseEntity<String> deleteMovie(int id) {
         try {
             movieService.delete(id);
-            return ResponseEntity.ok("{message: \"Movie successfully deleted\"}");
+            return ResponseEntity.ok("{\"message\": \"Movie successfully deleted\"}");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{message: \"Failed to delete movie\"}");
+            return ResponseEntity.badRequest().body("{\"message\": \"Failed to delete movie\"}");
         }
     }
 
@@ -44,9 +44,9 @@ public class MovieControllerImp implements MovieController{
     public ResponseEntity<String> editMovie(MovieDTO movieDTO) {
         try {
             movieService.edit(movieDTO);
-            return ResponseEntity.ok("{message: \"Movie successfully updated\"}");
+            return ResponseEntity.ok("{\"message\": \"Movie successfully added\"}");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{message: \"Failed to update movie\"}");
+            return ResponseEntity.badRequest().body("{\"message\": \"Failed to update movie\"}");
         }
     }
 
@@ -54,9 +54,9 @@ public class MovieControllerImp implements MovieController{
     public ResponseEntity<String> postMovie(@RequestBody Movie movie) {
         try {
             movieService.createMovie(movie);
-            return ResponseEntity.ok("{message: \"Movie successfully added\"}");
+            return ResponseEntity.ok("{\"message\": \"Movie successfully added\"}");
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("{message: \"Starting date is after Ending date, please check\"}");
+            return ResponseEntity.badRequest().body("{\"message\": \"Starting date is after Ending date, please check\"}");
         }
     }
     @Override

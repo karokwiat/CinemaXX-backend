@@ -42,6 +42,7 @@ public class AuthenticationController {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = LoginResponse.class)) }),
             @ApiResponse(responseCode = "401", description = "Incorrect credentials", content = { @Content }) })
     public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) {
+        System.out.println("I am here");
         String username = authenticationRequest.getUsername();
         String password = authenticationRequest.getPassword();
 
