@@ -15,9 +15,10 @@ frontend github repositories:
 * cinema customer https://github.com/andr01a0/CinemaXX-frontend
 * admin https://github.com/andr01a0/CinemaXX-frontendAdmin
 
-* hosted backend: http://54.175.181.176:9090
-* hosted frontend - cinema customer: http://54.175.181.176:5500/ 
-* hosted frontend - admin: http://54.175.181.176:5501/
+hosted
+* backend: http://54.175.181.176:9090
+* frontend - cinema customer: http://54.175.181.176:5500/ 
+* frontend - admin: http://54.175.181.176:5501/
 
 * video: https://www.youtube.com/watch?v=e6-1wPW-9Nc&ab_channel=JuanNicolai
 
