@@ -46,6 +46,11 @@ public class MovieServiceImp implements MovieService{
     }
 
     @Override
+    public List<MovieDTO> getAllMovies() {
+        return MovieDTO.entityToDTO(movieRepo.findAll());
+    }
+
+    @Override
     public void delete(int id) {
         Movie movie = movieRepo.getById(id);
         movieRepo.delete(movie);

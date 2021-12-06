@@ -15,6 +15,8 @@ public interface MovieService {
 
     MovieDTOCustomer getById(int id);
 
+    List<MovieDTO> getAllMovies();
+
     List<MovieDTODate> getByDateRange(LocalDate startRange, LocalDate endRange);
 
     public void delete(int id);

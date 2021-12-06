@@ -16,7 +16,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .addMapping("/**")
                 .allowedOrigins(
                         "http://localhost:5500",
+                        "http://localhost:5501",
                         "http://127.0.0.1:5500",
+                        "http://127.0.0.1:5501",
                         "http://52.90.82.222:5500/",
                         "http://52.90.82.222:5501/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
