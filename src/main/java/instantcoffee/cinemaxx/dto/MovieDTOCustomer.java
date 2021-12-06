@@ -25,6 +25,7 @@ public class MovieDTOCustomer {
     private String image;
     private String poster;
     private String trailer;
+    private Set<TimeSlotDTO> timeSlots;
 
 
     public MovieDTOCustomer(Movie movie) {
@@ -38,6 +39,7 @@ public class MovieDTOCustomer {
         this.image = movie.getImage();
         this.poster = movie.getPoster();
         this.trailer = movie.getTrailer();
+        this.timeSlots = timeSlots;
     }
 
     private static ModelMapper modelMapper = new ModelMapper();
