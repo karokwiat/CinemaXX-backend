@@ -21,8 +21,8 @@ hosted:
 * frontend - admin http://52.90.82.222:5501/
 
 videos:
-* cinema customer https://www.youtube.com/watch?v=e6-1wPW-9Nc&ab_channel=JuanNicolai
-* admin https://www.youtube.com/watch?v=qP7Lm0_pwjg&ab_channel=JuanNicolai
+* cinema customer https://www.youtube.com/watch?v=EpYQwB8W3uw
+* admin https://www.youtube.com/watch?v=EpYQwB8W3uw
 
 ### Swagger Documentation
 
