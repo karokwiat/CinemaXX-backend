@@ -44,7 +44,7 @@ public class MovieControllerImp implements MovieController{
     public ResponseEntity<String> editMovie(MovieDTO movieDTO) {
         try {
             movieService.edit(movieDTO);
-            return ResponseEntity.ok("{\"message\": \"Movie successfully added\"}");
+            return ResponseEntity.ok("{\"message\": \"Movie successfully changed\"}");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("{\"message\": \"Failed to update movie\"}");
         }
