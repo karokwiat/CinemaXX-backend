@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 
 public class TimeSlotDTO {
 
+    private int timeSlotId;
     private LocalDateTime scheduledTime;
     private static ModelMapper modelMapper = new ModelMapper();
 
