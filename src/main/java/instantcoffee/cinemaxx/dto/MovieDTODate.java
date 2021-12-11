@@ -36,7 +36,7 @@ public class MovieDTODate {
                         new MovieDTODate(x.getMovieId(), x.getTitle(), x.getAgeRestriction(), x.getPoster(),
                             x.getTimeSlots().stream()
                         .map(c ->
-                            new TimeSlotDTO(c.getScheduledTime()))
+                            new TimeSlotDTO(c.getTimeSlotId(), c.getScheduledTime()))
                         .collect(Collectors.toSet())))
                 .collect(Collectors.toList());
     }

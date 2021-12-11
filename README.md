@@ -9,6 +9,21 @@ CinemaXX Project
 
 Andre Jeronimo Camargo Bittencourt | Juan Ignacio Nicolai | Karolina Barbara Kwiatkowska | Snorri Sigurjonsson | Veselin Plamenov Ivanov
 
+### Links
+
+frontend github repositories: 
+* cinema customer https://github.com/andr01a0/CinemaXX-frontend
+* admin https://github.com/andr01a0/CinemaXX-frontendAdmin
+
+hosted:
+* backend http://52.90.82.222:9090
+* frontend - cinema customer http://52.90.82.222:5500/ 
+* frontend - admin http://52.90.82.222:5501/
+
+videos:
+* cinema customer https://www.youtube.com/watch?v=EpYQwB8W3uw
+* admin https://www.youtube.com/watch?v=EpYQwB8W3uw
+
 ### Swagger Documentation
 
 http://localhost:9090/api/swagger
