@@ -63,7 +63,7 @@ public class JwtUserDetailsService implements UserDetailsService {
       return false;
     }
 
-    UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+    UserDetails userDetails = this.loadUserByUsername(username);
 
     if (userDetails != null && this.jwtTokenUtil.validateToken(token, userDetails)) {
       return true;
