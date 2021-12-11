@@ -12,20 +12,20 @@ import java.util.Set;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SeatListDTO {
 
-    private Set<String> freeSeats;
-    private Set<String> bookedSeats;
+    private Set<SeatDTO> freeSeats;
+    private Set<SeatDTO> bookedSeats;
 
     public SeatListDTO() {
         this.freeSeats = new HashSet<>();
         this.bookedSeats = new HashSet<>();
     }
 
-    public void addFreeSeat(Seat seat){
-        freeSeats.add(seat.getSeatNumber());
+    public void addFreeSeat(SeatDTO seat){
+        freeSeats.add(seat);
     }
 
-    public void addBookedSeat(Seat seat){
-        bookedSeats.add(seat.getSeatNumber());
+    public void addBookedSeat(SeatDTO seat){
+        bookedSeats.add(seat);
     }
 }
 

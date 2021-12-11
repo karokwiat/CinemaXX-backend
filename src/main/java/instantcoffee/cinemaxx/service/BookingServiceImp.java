@@ -3,6 +3,7 @@ package instantcoffee.cinemaxx.service;
 import instantcoffee.cinemaxx.authentication.User;
 import instantcoffee.cinemaxx.dto.BookingDTO;
 import instantcoffee.cinemaxx.dto.BookingDTOClient;
+import instantcoffee.cinemaxx.dto.SeatDTO;
 import instantcoffee.cinemaxx.dto.SeatListDTO;
 import instantcoffee.cinemaxx.entities.*;
 import instantcoffee.cinemaxx.error.BadRequestException;
@@ -11,6 +12,8 @@ import instantcoffee.cinemaxx.repo.SeatRepo;
 import instantcoffee.cinemaxx.repo.TheaterHallRepo;
 import instantcoffee.cinemaxx.repo.TimeSlotRepo;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,8 @@ public class BookingServiceImp implements BookingService {
     private final SeatRepo seatRepo;
     @Autowired
     TimeSlotRepo timeSlotRepo;
+
+    private static ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public BookingDTOClient createBooking(User user, String theaterHallId, String movieId, String timeSlotId, String seatId) {
@@ -91,16 +96,17 @@ public class BookingServiceImp implements BookingService {
 
         for (Seat seat: seatList) {
             boolean booked = false;
+            SeatDTO seatDto = new SeatDTO(seat);
             for (TimeSlot timeSlot: timeSlotList) {
                 List<Booking> bookingList = bookingRepository.findAllByTimeSlotAndAndSeat(timeSlot, seat);
                 if (!bookingList.isEmpty()) {
-                    seatListDTO.addBookedSeat(seat);
+                    seatListDTO.addBookedSeat(seatDto);
                     booked = true;
                     break;
                 }
             }
             if (!booked)
-                seatListDTO.addFreeSeat(seat);
+                seatListDTO.addFreeSeat(seatDto);
         }
         return seatListDTO;
     }

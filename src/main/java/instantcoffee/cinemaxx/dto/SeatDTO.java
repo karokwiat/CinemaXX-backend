@@ -23,11 +23,11 @@ public class SeatDTO {
         this.theaterHallId = seat.getTheaterHall().getTheaterHallId();
     }
 
-    public SeatDTO(int seatId, String seatNumber, int theaterHallId) {
+    /*public SeatDTO(int seatId, String seatNumber, int theaterHallId) {
         this.seatId = seatId;
         this.seatNumber = seatNumber;
         this.theaterHallId = theaterHallId;
-    }
+    }*/
 
     private static ModelMapper modelMapper = new ModelMapper();
 
@@ -36,8 +36,8 @@ public class SeatDTO {
         return seatDTO;
     }
 
-    public static List<SeatDTO> entityToDTO(List<Seat> seats) {
+    /*public static List<SeatDTO> entityToDTO(List<Seat> seats) {
         return seats.stream().map(x -> entityToDTO(x)).collect(Collectors.toList());
-    }
+    }*/
 
 }

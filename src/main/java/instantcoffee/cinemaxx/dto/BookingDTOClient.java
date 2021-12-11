@@ -19,11 +19,13 @@ public class BookingDTOClient {
     private String userEmail;
     private LocalDateTime scheduledTime;
     private String seatNumber;
+    private int seatId;
 
-    public BookingDTOClient(String userEmail, LocalDateTime scheduledTime, String seatNumber){
+    public BookingDTOClient(String userEmail, LocalDateTime scheduledTime, String seatNumber, int seatId){
         this.userEmail = userEmail;
         this.scheduledTime = scheduledTime;
         this.seatNumber = seatNumber;
+        this.seatId = seatId;
     }
 
     public BookingDTOClient(Booking booking) {
@@ -31,6 +33,7 @@ public class BookingDTOClient {
         this.userEmail = booking.getUser().getEmail();
         this.scheduledTime = booking.getTimeSlot().getScheduledTime();
         this.seatNumber = booking.getSeat().getSeatNumber();
+        this.seatId = booking.getSeat().getSeatId();
     }
 
     private static ModelMapper modelMapper = new ModelMapper();

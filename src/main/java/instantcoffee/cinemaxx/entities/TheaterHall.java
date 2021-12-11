@@ -20,6 +20,7 @@ public class TheaterHall {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "theater_hall_id")
   private int theaterHallId;
+
   @Column(name = "movie_theater_id")
   private int movieTheaterId;
 
