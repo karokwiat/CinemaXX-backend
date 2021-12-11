@@ -1,5 +1,6 @@
 package instantcoffee.cinemaxx.authentication;
 
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -58,7 +59,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     String username;
 
     try {
-      username = this.jwtTokenUtil.getUsernameFromToken(jwtToken);
+      username = this.jwtTokenUtil.getUsernameFromToken(token);
     } catch (SignatureException exception) {
       return false;
     }

@@ -1,3 +1,4 @@
+package instantcoffee.cinemaxx.authentication;
 import lombok.*;
 
 @AllArgsConstructor

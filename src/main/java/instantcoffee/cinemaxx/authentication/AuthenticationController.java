@@ -63,7 +63,7 @@ public class AuthenticationController {
             @ApiResponse(responseCode = "401", description = "Token is invalid", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = CheckTokenResponse.class)) }) })
     public ResponseEntity<?> checkToken(@RequestBody CheckTokenRequest checkTokenRequest) {
-        boolean isValid = this.jwtUserDetailsService.checkToken(checkTokenRequest.token);
+        boolean isValid = this.jwtUserDetailsService.checkToken(checkTokenRequest.getToken());
 
         if (isValid) {
             return ResponseEntity.ok(new CheckTokenResponse("valid"));
