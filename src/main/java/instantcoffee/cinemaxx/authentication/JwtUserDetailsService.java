@@ -1,9 +1,11 @@
 package instantcoffee.cinemaxx.authentication;
 
-import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
@@ -50,5 +52,23 @@ public class JwtUserDetailsService implements UserDetailsService {
     String token = jwtTokenUtil.generateToken(user);
 
     return token;
+  }
+
+  public boolean checkToken(String token) {
+    String username;
+
+    try {
+      username = this.jwtTokenUtil.getUsernameFromToken(jwtToken);
+    } catch (SignatureException exception) {
+      return false;
+    }
+
+    UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+
+    if (userDetails != null && this.jwtTokenUtil.validateToken(token, userDetails)) {
+      return true;
+    }
+
+    return false;
   }
 }
