@@ -1,23 +1,23 @@
 package instantcoffee.cinemaxx.dto;
 
 import instantcoffee.cinemaxx.entities.TheaterHall;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-@NoArgsConstructor
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class TheaterHallDTO {
 
   private int theaterHallId;
-
-  public TheaterHallDTO(TheaterHall theaterHall) {
-    this.theaterHallId = theaterHall.getTheaterHallId();
-  }
 
   private static ModelMapper modelMapper = new ModelMapper();
 
