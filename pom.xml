@@ -13,10 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cinemaxx</name>
 	<description>cinemaxx</description>
-	<properties>
-		<java.version>11</java.version>
-		<maven.compiler.release>11</maven.compiler.release>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
