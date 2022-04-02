@@ -11,9 +11,7 @@ Andre Jeronimo Camargo Bittencourt | Juan Ignacio Nicolai | Karolina Barbara Kwi
 
 ### Links
 
-frontend github repositories: 
-* cinema customer https://github.com/andr01a0/CinemaXX-frontend
-* admin https://github.com/andr01a0/CinemaXX-frontendAdmin
+frontend github repository: https://github.com/karokwiat/CinemaXX-frontend
 
 ### Swagger Documentation
 
