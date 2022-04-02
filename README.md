@@ -15,15 +15,6 @@ frontend github repositories:
 * cinema customer https://github.com/andr01a0/CinemaXX-frontend
 * admin https://github.com/andr01a0/CinemaXX-frontendAdmin
 
-hosted:
-* backend http://52.90.82.222:9090
-* frontend - cinema customer http://52.90.82.222:5500/ 
-* frontend - admin http://52.90.82.222:5501/
-
-videos:
-* https://www.youtube.com/watch?v=PSMyXxcutUg&feature=youtu.be
-* https://www.youtube.com/watch?v=arXJntvkVxc
-
 ### Swagger Documentation
 
 http://localhost:9090/api/swagger
@@ -83,36 +74,3 @@ public String hello(@AuthenticationPrincipal User user) {
   return "hello";
 }
 ```
-
-### Individual contribution
-
-Andre : andr01a0
-- User Story: delete movies.
-- User Story: edit movies.
-- User Story: cancel bookings.
-- User Story: edit bookings.
-- AMAZON AWS EC2 instance server with DevOps - CI/CD with jenkins building from GitHub into docker containers using environment variables.
-- Pair-programming with team mates to solve problems encountered.
-
-Juani : juaninicolai
-- I performed as Scrum Master and directed all the Daily meetings.
-- Built our Kanban board to follow the team progress.
-- I built the “create movie” endpoint. Andre helped me to test de validation of it (pair programming).
-- I built the “get free / booked seat list” with Andre’s guidance (pair programming).
-- I participated in the overall testing of the endpoints before submitting to the PO.
-
-Karolina : karokwiat
-- the DDL and DML.
-- get-movie-info endpoint.
-- I did the pair programming working on the endpoint where all movie-titles, schedule-times, age requirements for all cinema halls in the movie theatre in question are returned for a given start- and end date.
-- I participated in creating the create-booking endpoint.
-
-Snorri : SnorriSig
-- Endpoint where all movie-titles, schedule-times, age requirements for all cinema halls in the movie theater in question are returned for a given start- and end date, typically a week. Karolina assisted me with MYSQL logic and Veselin with DTO.
-- Add Link to image(s) + trailer(s) and poster(s) to "Get movie info".
-- Worked on entity relations with others.
-
-Veselin : v3s1e
-- Implemented Authentication with Spring Security.
-- Participated in the creation of the endpoint to book a seat for a movie.
-- Helped the team with problems we encountered during the sprint.
